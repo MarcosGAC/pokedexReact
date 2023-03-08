@@ -1,0 +1,23 @@
+.pokedex-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+}
+
+.pokedex-grid {
+ display: flex;
+ flex-wrap: wrap;
+ gap: 10px; 
+ padding: 5%;
+}
+
+.pokedex-header h1 {
+  font-size: 60px;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  color: yellow;
+  text-shadow: -1px 5px 0px rgb(35, 21, 118), -1px 5px 0px rgb(35, 21, 118),
+    -1px 5px 0px rgb(35, 21, 118), -1px 5px 0px rgb(35, 21, 118);
+}

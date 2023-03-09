@@ -1,13 +1,25 @@
 import "./modal.css";
 import pokebola from "../../assets/pokebola.png";
-export default function ModalPokemon({ closeModal, name, imagem, pokemon }) {
-  
+import { typeImages } from "../Pokemon";
+import proximo from "../../assets/proximo.svg";
+import { useState } from "react";
 
+export default function ModalPokemon({ closeModal, name, imagem, pokemon }) {
+  const [imagePoke, setImagePoke] = useState(imagem);
+
+  function changeImage() {
+    const newImage =
+      imagePoke === imagem
+        ? `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/${pokemon.id}.png`
+        : `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.id}.png`;
+    setImagePoke(newImage);
+  }
 
   function lockScroll() {
     closeModal(false);
     document.body.style.overflow = "auto";
   }
+
 
   return (
     <div className="modal-background pr-4" id="overlay">
@@ -25,12 +37,28 @@ export default function ModalPokemon({ closeModal, name, imagem, pokemon }) {
             </button>
           </div>
 
-          <h1 className="pokemon-name">{name}</h1>
+          <h1 className="pokemon-name">{name.toUpperCase()}</h1>
 
           <div className="flex pl-[10%] items-center">
             <div>
               {imagem ? (
-                <img src={imagem} alt={name} className="w-[200px] h-[200px]" />
+                <div className="flex items-center">
+                  <img
+                    src={imagePoke}
+                    alt={name}
+                    className="w-[200px] h-[200px]"
+                  />
+                  <button
+                    onClick={() => changeImage()}
+                    className="pt-auto pr-auto flex"
+                  >
+                    <img
+                      className="h-8 w-8 "
+                      src={proximo}
+                      alt="icone proximo"
+                    />
+                  </button>
+                </div>
               ) : (
                 <img
                   src={pokebola}
@@ -44,7 +72,7 @@ export default function ModalPokemon({ closeModal, name, imagem, pokemon }) {
                   return (
                     <div key={index} className="pokemon-type ">
                       <div
-                        className={`pokemon-type-${type.type.name}`}
+                        className={`pokemon-type-${type.type.name} gap-1`}
                         style={{
                           boxShadow: "4px 4px 4px rgba(0, 0, 0, 0.5)",
                           borderRadius: "25px",
@@ -58,6 +86,15 @@ export default function ModalPokemon({ closeModal, name, imagem, pokemon }) {
                           color: "white",
                         }}
                       >
+                        <img
+                          src={
+                            typeImages[type.type.name]
+                              ? typeImages[type.type.name]
+                              : null
+                          }
+                          alt={type.type.name}
+                          className="h-[25px] w-[25px]"
+                        />
                         {type.type.name}
                       </div>
                     </div>

@@ -7,20 +7,16 @@ const Searchbar = (props) => {
   const exceptThisSymbols = ["."];
 
   const onChangeHandler = (e) => {
-   
     const result = e.target.value.toLowerCase();
     setSearch(result);
     if (e.target.value.length === 0) {
       onSearch(undefined);
     }
-  }
-
-  const onClickBtnHandler = () => {
-    onSearch(search)
   };
 
-
-
+  const onClickBtnHandler = () => {
+    onSearch(search);
+  };
 
   return (
     <div className="searchbar-container ">
@@ -34,7 +30,12 @@ const Searchbar = (props) => {
         />
       </div>
       <div className="searchbar-btn">
-        <button className=" flex items-center text-[20px] " onClick={onClickBtnHandler}>Buscar</button>
+        <button
+          className=" flex items-center text-[20px] "
+          onClick={onClickBtnHandler}
+        >
+          Buscar
+        </button>
       </div>
     </div>
   );

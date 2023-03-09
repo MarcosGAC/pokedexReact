@@ -23,36 +23,36 @@ import dragon from "../../assets/dragon.svg";
 import fire from "../../assets/fire.svg";
 
 
+export const typeImages = {
+  flying:flying,
+  dark:dark,
+  bug:bug,
+  ghost:ghost,
+  grass:grass,
+  dragon:dragon,
+  poison: poison,
+  fairy: fairy,
+  fighting: fighting,
+  electric: eletric,
+  ground: ground,
+  ice: ice,
+  normal: normal,
+  psychic: psychic,
+  rock: rock,
+  steel: steel,
+  water: water,
+  fire:fire,
+};
+
 const Pokemon = (props) => {
   const { pokemon } = props;
   const [open, setOpen] = useState(false);
-
-   const typeImages = {
-    flying:flying,
-    dark:dark,
-    bug:bug,
-    ghost:ghost,
-    grass:grass,
-    dragon:dragon,
-    poison: poison,
-    fairy: fairy,
-    fighting: fighting,
-    electric: eletric,
-    ground: ground,
-    ice: ice,
-    normal: normal,
-    psychic: psychic,
-    rock: rock,
-    steel: steel,
-    water: water,
-    fire:fire,
-  };
 
   function openModal() {
     setOpen(true);
     document.body.style.overflow = "hidden";
   }
-
+  
   return (
     <div
       className={`pokemon-card-${pokemon.types[0].type.name} card-container transition-transform    hover:border-[2px] border-white`}
@@ -68,7 +68,7 @@ const Pokemon = (props) => {
         <div className="w-[350px] text-white pl-4">
           <h2 className="font-sans text-[25px] text-left">#{pokemon.id}</h2>
           <h1 className="font-sans text-[50px] text-left overflow-hidden text-ellipsis whitespace-nowrap max-w-[280px] italic">
-            {pokemon.name}
+            {pokemon.name.toUpperCase()}
           </h1>
           <div className="flex  ">
             {pokemon.types.map((type, index) => {
@@ -89,7 +89,7 @@ const Pokemon = (props) => {
                       color: "white",
                     }}
                   >
-                    <div className="flex items-center justify-around gap-2">
+                    <div className="flex items-center justify-around gap-1">
                     
                         <img
                           src={
@@ -101,7 +101,7 @@ const Pokemon = (props) => {
                           className="h-[25px] w-[25px]"
                         />
                      
-                      <div className="text-[15px] ">{type.type.name}</div>
+                      <div className="text-[15px] ">{type.type.name.toUpperCase()}</div>
                     </div>
                   </div>
                 </div>
@@ -130,8 +130,9 @@ const Pokemon = (props) => {
         <ModalPokemon
           closeModal={setOpen}
           name={pokemon.name}
-          imagem={pokemon.sprites.front_default}
+          imagem={pokemon.sprites.front_default }
           pokemon={pokemon}
+          tipo= {typeImages}
         />
       ) : null}
     </div>

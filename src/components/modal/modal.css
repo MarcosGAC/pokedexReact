@@ -1,5 +1,5 @@
 .modal-background {
-  background-color: rgba(0, 0, 0, 0.342);
+  background-color: rgba(0, 0, 0, 0.7);
   width: 100vw;
   height: 100vh;
   position: fixed;
@@ -13,14 +13,34 @@
 }
 
 .modal-container {
-  margin:  0 1rem;
+  margin: 0 1rem;
   width: 100%;
   max-width: 800px;
   height: 100%;
   max-height: 600px;
   background-color: white;
   border-radius: 25px;
+  overflow: hidden;
+  
+  /* Estilos responsivos para mobile */
+  @media (max-width: 639px) {
+    margin: 0;
+    border-radius: 0;
+    max-height: unset;
+    height: unset;
+  }
+  
+  /* Estilos responsivos para tablet */
+  @media (min-width: 640px) and (max-width: 1023px) {
+    margin: 0 2rem;
+  }
+  
+  /* Estilos responsivos para desktop */
+  @media (min-width: 1024px) {
+    margin: 0 auto;
+  }
 }
+
 
 .pokemon-name {
   font-size: 45px;

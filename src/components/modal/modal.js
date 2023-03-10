@@ -3,6 +3,7 @@ import pokebola from "../../assets/pokebola.png";
 import { typeImages } from "../Pokemon";
 import proximo from "../../assets/proximo.svg";
 import { useState } from "react";
+import { useEffect } from "react";
 
 export default function ModalPokemon({ closeModal, name, imagem, pokemon }) {
   const [imagePoke, setImagePoke] = useState(imagem);
@@ -15,14 +16,40 @@ export default function ModalPokemon({ closeModal, name, imagem, pokemon }) {
     setImagePoke(newImage);
   }
 
-  function lockScroll() {
-    closeModal(false);
-    document.body.style.overflow = "auto";
+  const clicarFora = ".modal-container";
+  const clicarX = ".fecharmodal";
+
+  function lockScroll(event) {
+    if (
+      event &&
+      (!event.target.closest(clicarFora) || event.target.closest(clicarX))
+    ) {
+      closeModal(false);
+      document.body.style.overflow = "auto";
+    }
   }
 
+  useEffect(() => {
+    function handleKeyDown(event) {
+      if (event.key === "Escape") {
+        closeModal(false);
+        document.body.style.overflow = "auto";
+      }
+    }
+
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [closeModal]);
 
   return (
-    <div className="modal-background pr-4" id="overlay">
+    <div
+      className="modal-background pr-4"
+      id="overlay"
+      onClick={(event) => lockScroll(event)}
+    >
       <div className="modal-container" id="modal">
         <div
           className={`pokemon-card-${pokemon.types[0].type.name}`}
@@ -31,7 +58,7 @@ export default function ModalPokemon({ closeModal, name, imagem, pokemon }) {
           <div className="header-modal">
             <button
               onClick={() => lockScroll()}
-              className="text-[25px] ml-[95%]"
+              className="fecharmodal text-[25px] ml-[95%]"
             >
               x
             </button>
@@ -113,11 +140,11 @@ export default function ModalPokemon({ closeModal, name, imagem, pokemon }) {
                     style={{ width: `${statBar}%` }}
                   >
                     <div
-                      className=" bg-white h-[40px]  p-2 m-2 rounded-xl flex justify-between min-w-[200px] max-w-[370px] "
+                      className="bg-white h-[40px] p-2 m-2 rounded-xl flex justify-between min-w-[200px] max-w-[320px] sm:min-w-[200px] sm:max-w-[250px] md:min-w-[200px] md:max-w-[300px] lg:min-w-[300px] lg:max-w-[400px] flex-wrap"
                       style={{ width: `${statBar}%` }}
                     >
                       <div
-                        className=" bg-green-400 rounded-lg items-center flex"
+                        className="bg-green-400 rounded-lg items-center flex"
                         style={{ width: `${statBar}%` }}
                       >
                         <div className="absolute text-[22px] ">
@@ -131,7 +158,7 @@ export default function ModalPokemon({ closeModal, name, imagem, pokemon }) {
               })}
             </div>
           </div>
-          <h2 className="text-[25px] pl-2 ">Habilidades:</h2>
+          <h2 className="text-[25px] pl-36 text-white">Habilidades:</h2>
           <div className="moves-pokemon">
             {pokemon.moves.map((move, index) => {
               return (

@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { getPokemonData, getPokemons, searchPokemon } from "./api";
 import "./App.css";
-import Navbar from "./components/navbar";
 import Pokedex from "./components/pokedex";
 import Searchbar from "./components/searchbar";
 import notfound from "./assets/notfound.jpg";
@@ -56,11 +55,12 @@ function App() {
 
   }
   return (
-    <div className="bg-gradient-to-b from-black to-white">
-      <div className="pl-2 pr-2 ">
-        <Navbar />
-
+    <div className="bg-gradient-to-b from-red-500 to-yellow-500 ">
+      <div className=" pr-2 ">
+        
+      
         <Searchbar onSearch={onSearchHandler} />
+        
         {notFound ? (
           <div className="w-full h-full">
             <div className="text-[25px] flex justify-center">

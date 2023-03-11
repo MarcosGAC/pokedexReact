@@ -4,7 +4,7 @@
   align-items: center;
 }
 .pagination-container button {
-  color: aliceblue;
+  color: rgb(0, 71, 132);
   font-size: 30px;
   display: flex;
 }
@@ -17,4 +17,12 @@
   font-weight: bolder;
   display: flex;
   align-items: center;
+}
+.paginationtext{
+  font-size: 40px;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  color: yellow;
+  text-shadow: -1px 5px 0px rgb(35, 21, 118), -1px 5px 0px rgb(35, 21, 118),
+    -1px 5px 0px rgb(35, 21, 118), -1px 5px 0px rgb(35, 21, 118);
 }

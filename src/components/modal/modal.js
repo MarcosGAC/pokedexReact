@@ -50,7 +50,7 @@ export default function ModalPokemon({ closeModal, name, imagem, pokemon }) {
       id="overlay"
       onClick={(event) => lockScroll(event)}
     >
-      <div className="modal-container" id="modal">
+      <div className="modal-container " id="modal">
         <div
           className={`pokemon-card-${pokemon.types[0].type.name}`}
           style={{ width: "100%", height: "600px", borderRadius: "25px" }}
@@ -140,7 +140,7 @@ export default function ModalPokemon({ closeModal, name, imagem, pokemon }) {
                     style={{ width: `${statBar}%` }}
                   >
                     <div
-                      className="bg-white h-[40px] p-2 m-2 rounded-xl flex justify-between min-w-[200px] max-w-[320px] sm:min-w-[200px] sm:max-w-[250px] md:min-w-[200px] md:max-w-[300px] lg:min-w-[300px] lg:max-w-[400px] flex-wrap"
+                      className="bg-white h-[40px] p-2 m-2 rounded-xl flex justify-between min-w-[200px] max-w-[320px] sm:min-w-[180px] sm:max-w-[250px] md:min-w-[200px] md:max-w-[300px] lg:min-w-[300px] lg:max-w-[400px] flex-wrap"
                       style={{ width: `${statBar}%` }}
                     >
                       <div

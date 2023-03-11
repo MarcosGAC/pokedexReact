@@ -20,7 +20,7 @@ const Pokedex = (props) => {
 
 
   return (
-    <div className="pokedex-container">
+    <div className="pokedex-container pt-[10%] ">
       <div className="pokedex-header ">
         <h1>Pokédex</h1>
         <Pagination
@@ -45,6 +45,14 @@ const Pokedex = (props) => {
         </section>
         </div>
       )}
+     <div className="text-center justify-center flex">
+       <Pagination
+          page={page + 1}
+          totalPages={totalPages}
+          onLeftClick={onLeftClickHandler}
+          onRightClick={onRightClickHandler}
+        />
+        </div>
     </div>
   );
 };

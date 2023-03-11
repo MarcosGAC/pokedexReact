@@ -21,6 +21,7 @@
   background-color: white;
   border-radius: 25px;
   overflow: hidden;
+  min-width: 400px;
   
   /* Estilos responsivos para mobile */
   @media (max-width: 639px) {
@@ -29,6 +30,7 @@
     max-height: unset;
     height: unset;
   }
+ 
   
   /* Estilos responsivos para tablet */
   @media (min-width: 640px) and (max-width: 1023px) {

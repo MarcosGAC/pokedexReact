@@ -11,6 +11,7 @@ function App() {
   const [loading, setLoading] = useState(false);
   const [notFound, setNotFound] = useState(false);
   const [pokemons, setPokemons] = useState([]);
+  const [searchbarOpen, setSearchbarOpen] = useState(false)
 
   const itensPerPage = 27;
 
@@ -54,12 +55,14 @@ function App() {
     setLoading(false)
 
   }
+ 
+
   return (
     <div className="bg-gradient-to-b from-red-500 to-yellow-500 ">
       <div className=" pr-2 ">
         
       
-        <Searchbar onSearch={onSearchHandler} />
+        <Searchbar onSearch={onSearchHandler}  searchbarOpen={searchbarOpen}/>
         
         {notFound ? (
           <div className="w-full h-full">
@@ -81,6 +84,8 @@ function App() {
             page={page}
             totalPages={totalPages}
             setPage={setPage}
+            searchbarOpen={searchbarOpen}
+            setSearchbarOpen={setSearchbarOpen}
           />
         )}
       </div>

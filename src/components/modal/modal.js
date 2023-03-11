@@ -5,7 +5,7 @@ import proximo from "../../assets/proximo.svg";
 import { useState } from "react";
 import { useEffect } from "react";
 
-export default function ModalPokemon({ closeModal, name, imagem, pokemon }) {
+export default function ModalPokemon({ closeModal, name, imagem, pokemon,searchbarOpen,setSearchbarOpen }) {
   const [imagePoke, setImagePoke] = useState(imagem);
 
   function changeImage() {
@@ -24,9 +24,11 @@ export default function ModalPokemon({ closeModal, name, imagem, pokemon }) {
       event &&
       (!event.target.closest(clicarFora) || event.target.closest(clicarX))
     ) {
+      setSearchbarOpen(false)
       closeModal(false);
       document.body.style.overflow = "auto";
     }
+  
   }
 
   useEffect(() => {
@@ -43,6 +45,7 @@ export default function ModalPokemon({ closeModal, name, imagem, pokemon }) {
       window.removeEventListener("keydown", handleKeyDown);
     };
   }, [closeModal]);
+
 
   return (
     <div

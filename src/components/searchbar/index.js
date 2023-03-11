@@ -1,10 +1,10 @@
-import { useState } from "react";
+import {useState } from "react";
 import "./search.css";
 import Navbar from "../navbar";
 
 const Searchbar = (props) => {
   const [search, setSearch] = useState();
-  const { onSearch } = props;
+  const { onSearch,searchbarOpen } = props;
   const exceptThisSymbols = ["."];
 
   const onChangeHandler = (e) => {
@@ -19,8 +19,25 @@ const Searchbar = (props) => {
     onSearch(search);
   };
 
+  let mostrar = ""
+  if(searchbarOpen === true){
+    mostrar = ""
+  }else{
+    mostrar = "fixed"
+  }
+
+  const mudar=
+    {
+   
+    width:"100%",
+    zIndex:"50",
+    justifyContent:"space-between",
+    position: mostrar
+  }
+  
+
   return (
-    <div className="searchbar-container fixed  bg-red-500  w-full z-50 justify-between">
+    <div className="searchbar-container bg-red-500 shadow-red-800 shadow-xl" style={mudar}>
       <div className="flex items-center">
         <div className="searchbar ">
           <input

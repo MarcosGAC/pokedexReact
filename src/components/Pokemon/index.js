@@ -22,14 +22,13 @@ import bug from "../../assets/bug.svg";
 import dragon from "../../assets/dragon.svg";
 import fire from "../../assets/fire.svg";
 
-
 export const typeImages = {
-  flying:flying,
-  dark:dark,
-  bug:bug,
-  ghost:ghost,
-  grass:grass,
-  dragon:dragon,
+  flying: flying,
+  dark: dark,
+  bug: bug,
+  ghost: ghost,
+  grass: grass,
+  dragon: dragon,
   poison: poison,
   fairy: fairy,
   fighting: fighting,
@@ -41,18 +40,20 @@ export const typeImages = {
   rock: rock,
   steel: steel,
   water: water,
-  fire:fire,
+  fire: fire,
 };
 
 const Pokemon = (props) => {
-  const { pokemon } = props;
+  const { pokemon, searchbarOpen, setSearchbarOpen } = props;
   const [open, setOpen] = useState(false);
 
   function openModal() {
+    setSearchbarOpen(true)
     setOpen(true);
     document.body.style.overflow = "hidden";
   }
-  
+
+ 
   return (
     <div
       className={`pokemon-card-${pokemon.types[0].type.name} card-container transition-transform    hover:border-[2px] border-white`}
@@ -62,7 +63,7 @@ const Pokemon = (props) => {
           backgroundImage: `url(${Fundo})`,
           backgroundRepeat: "no-repeat",
         }}
-        onClick={() => openModal()}
+        onClick={() => openModal() }
         className="w-full p-2 h-full flex justify-between rounded-[25px] " //img, titulo, numero vai td aqui //card-container-button
       >
         <div className="w-[350px] text-white pl-4">
@@ -90,18 +91,19 @@ const Pokemon = (props) => {
                     }}
                   >
                     <div className="flex items-center justify-around gap-1">
-                    
-                        <img
-                          src={
-                            typeImages[type.type.name]
-                              ? typeImages[type.type.name]
-                              : null
-                          }
-                          alt={type.type.name}
-                          className="h-[25px] w-[25px]"
-                        />
-                     
-                      <div className="text-[15px] ">{type.type.name.toUpperCase()}</div>
+                      <img
+                        src={
+                          typeImages[type.type.name]
+                            ? typeImages[type.type.name]
+                            : null
+                        }
+                        alt={type.type.name}
+                        className="h-[25px] w-[25px]"
+                      />
+
+                      <div className="text-[15px] ">
+                        {type.type.name.toUpperCase()}
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -128,11 +130,13 @@ const Pokemon = (props) => {
 
       {open ? (
         <ModalPokemon
+          setSearchbarOpen={setSearchbarOpen}
+          searchbarOpen={searchbarOpen}
           closeModal={setOpen}
           name={pokemon.name}
-          imagem={pokemon.sprites.front_default }
+          imagem={pokemon.sprites.front_default}
           pokemon={pokemon}
-          tipo= {typeImages}
+          tipo={typeImages}
         />
       ) : null}
     </div>

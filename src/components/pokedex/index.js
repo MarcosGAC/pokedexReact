@@ -4,7 +4,7 @@ import Pokemon from "../Pokemon";
 import "./pokedex.css";
 
 const Pokedex = (props) => {
-  const { pokemons, loading, page, totalPages, setPage } = props;
+  const { pokemons, loading, page, totalPages, setPage,searchbarOpen, setSearchbarOpen} = props;
 
   const onLeftClickHandler = () => {
     if (page > 0) {
@@ -18,6 +18,7 @@ const Pokedex = (props) => {
     }
   };
 
+  
 
   return (
     <div className="pokedex-container pt-[10%] ">
@@ -40,7 +41,7 @@ const Pokedex = (props) => {
         <section className="pokedex-grid">
           {pokemons &&
             pokemons.map((pokemon, index) => {
-              return <Pokemon key={index} pokemon={pokemon} />;
+              return <Pokemon key={index} pokemon={pokemon} searchbarOpen={searchbarOpen} setSearchbarOpen={setSearchbarOpen}/>;
             })}
         </section>
         </div>

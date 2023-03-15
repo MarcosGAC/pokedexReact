@@ -37,14 +37,18 @@ const Searchbar = (props) => {
   
 
   return (
-    <div className="searchbar-container bg-red-500 shadow-red-800 shadow-xl" style={mudar}>
+    <>
+    {!searchbarOpen ? 
+      (
+        <div className="searchbar-container bg-red-900  shadow-lg shadow-zinc-900" style={mudar}>
       <div className="flex items-center">
         <div className="searchbar ">
           <input
+          className="w-[300px]"
             onKeyDown={(e) =>
               exceptThisSymbols.includes(e.key) && e.preventDefault()
             }
-            placeholder="Buscar Pokemon"
+            placeholder="Buscar Pokemon por nome ou id"
             onChange={onChangeHandler}
           />
       </div>
@@ -59,6 +63,10 @@ const Searchbar = (props) => {
       </div>
       <Navbar />
     </div>
+    
+    ) : (null)
+    }
+   </>
   );
 };
 

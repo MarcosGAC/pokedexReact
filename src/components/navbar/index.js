@@ -7,7 +7,7 @@ const Navbar = () => {
     <nav>
       <button>
       <a href="https://pokeapi.co/">
-        <img className="navbar-img" src={logo_img} alt="logo" />
+        <img className="navbar-img " src={logo_img} alt="logo" />
         </a>
       </button>
     </nav>

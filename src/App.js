@@ -14,7 +14,7 @@ function App() {
   const [searchbarOpen, setSearchbarOpen] = useState(false)
 
   const itensPerPage = 27;
-
+ 
   const fetchPokemons = async () => {
     try {
       setLoading(true);
@@ -56,12 +56,12 @@ function App() {
 
   }
  
-
+//console.log(pokemons)
+ 
   return (
     <div className="bg-gradient-to-b from-red-500 to-yellow-500 ">
       <div className=" pr-2 ">
         
-      
         <Searchbar onSearch={onSearchHandler}  searchbarOpen={searchbarOpen}/>
         
         {notFound ? (

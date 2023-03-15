@@ -1,62 +1,25 @@
-import "./pokemon.css";
+import "../pokemonsStyles/PokemonsStyles.css";
 import Fundo from "../../assets/fundo.svg";
 import pokebola from "../../assets/pokebola.png";
 import React, { useState } from "react";
 import ModalPokemon from "../modal/modal";
-import poison from "../../assets/poison.svg";
-import fairy from "../../assets/fairy.svg";
-import fighting from "../../assets/fighting.svg";
-import eletric from "../../assets/eletric.svg";
-import ground from "../../assets/ground.svg";
-import ice from "../../assets/ice.svg";
-import normal from "../../assets/normal.svg";
-import psychic from "../../assets/psychic.svg";
-import rock from "../../assets/rock.svg";
-import steel from "../../assets/steel.svg";
-import water from "../../assets/water.svg";
-import grass from "../../assets/grass.svg";
-import ghost from "../../assets/ghost.svg";
-import flying from "../../assets/flying.svg";
-import dark from "../../assets/dark.svg";
-import bug from "../../assets/bug.svg";
-import dragon from "../../assets/dragon.svg";
-import fire from "../../assets/fire.svg";
+import  typeImages  from "./iconesTypes";
 
-export const typeImages = {
-  flying: flying,
-  dark: dark,
-  bug: bug,
-  ghost: ghost,
-  grass: grass,
-  dragon: dragon,
-  poison: poison,
-  fairy: fairy,
-  fighting: fighting,
-  electric: eletric,
-  ground: ground,
-  ice: ice,
-  normal: normal,
-  psychic: psychic,
-  rock: rock,
-  steel: steel,
-  water: water,
-  fire: fire,
-};
 
 const Pokemon = (props) => {
   const { pokemon, searchbarOpen, setSearchbarOpen } = props;
   const [open, setOpen] = useState(false);
 
   function openModal() {
-    setSearchbarOpen(true)
     setOpen(true);
     document.body.style.overflow = "hidden";
+     setSearchbarOpen(true)
   }
 
- 
+
   return (
     <div
-      className={`pokemon-card-${pokemon.types[0].type.name} card-container transition-transform    hover:border-[2px] border-white`}
+      className={`pokemon-card-${pokemon.types[0].type.name} card-container   hover:border-2 border-white shadow-[30px_35px_35px_-15px_rgba(0,0,0,0.7)]`}
     >
       <button
         style={{

@@ -1,12 +1,42 @@
-import "./modal.css";
+import "../pokemonsStyles/PokemonsStyles.css";
 import pokebola from "../../assets/pokebola.png";
-import { typeImages } from "../Pokemon";
+import typeImages from "../Pokemon/iconesTypes";
 import proximo from "../../assets/proximo.svg";
 import { useState } from "react";
 import { useEffect } from "react";
+import { X } from "phosphor-react";
+import { getPokemonMove } from "../../api";
+import Moves from "./moves/moves";
+import StatusInfo from "./statusInfo/statusInfo";
+import TypePokemon from "./typePokemon/typePokemon";
 
-export default function ModalPokemon({ closeModal, name, imagem, pokemon,searchbarOpen,setSearchbarOpen }) {
+export default function ModalPokemon({
+  closeModal,
+  name,
+  imagem,
+  pokemon,
+  setSearchbarOpen,
+}) {
   const [imagePoke, setImagePoke] = useState(imagem);
+  const [selectedMove, setSelectedMove] = useState(null);
+  const [showModal, setShowModal] = useState(false);
+  const [showStatus, setShowStatus] = useState(false);
+  const [showHabilities, setShowHabilities] = useState(false);
+
+  function showStatusinfo() {
+    setShowHabilities(false);
+    setShowStatus(true);
+  }
+  function showHabilitiesInfo() {
+    setShowStatus(false);
+    setShowHabilities(true);
+  }
+
+  async function handleMoveClick(move) {
+    const moveData = await getPokemonMove(move.move.url);
+    setSelectedMove(moveData);
+    setShowModal(true);
+  }
 
   function changeImage() {
     const newImage =
@@ -24,11 +54,10 @@ export default function ModalPokemon({ closeModal, name, imagem, pokemon,searchb
       event &&
       (!event.target.closest(clicarFora) || event.target.closest(clicarX))
     ) {
-      setSearchbarOpen(false)
+      setSearchbarOpen(false);
       closeModal(false);
       document.body.style.overflow = "auto";
     }
-  
   }
 
   useEffect(() => {
@@ -46,6 +75,7 @@ export default function ModalPokemon({ closeModal, name, imagem, pokemon,searchb
     };
   }, [closeModal]);
 
+  //console.log(selectedMove)
 
   return (
     <div
@@ -53,125 +83,83 @@ export default function ModalPokemon({ closeModal, name, imagem, pokemon,searchb
       id="overlay"
       onClick={(event) => lockScroll(event)}
     >
-      <div className="modal-container " id="modal">
+      <div className="modal-container" id="modal">
         <div
           className={`pokemon-card-${pokemon.types[0].type.name}`}
           style={{ width: "100%", height: "600px", borderRadius: "25px" }}
         >
-          <div className="header-modal">
+          <div className="h-10 flex">
             <button
               onClick={() => lockScroll()}
-              className="fecharmodal text-[25px] ml-[95%]"
+              className="fecharmodal text-[25px] ml-[95%] s items-center text-white "
             >
-              x
+              <X size={21} />
             </button>
           </div>
 
           <h1 className="pokemon-name">{name.toUpperCase()}</h1>
-
-          <div className="flex pl-[10%] items-center">
-            <div>
-              {imagem ? (
-                <div className="flex items-center">
-                  <img
-                    src={imagePoke}
-                    alt={name}
-                    className="w-[200px] h-[200px]"
-                  />
-                  <button
-                    onClick={() => changeImage()}
-                    className="pt-auto pr-auto flex"
-                  >
+          <div className="flex h-full">
+            <div className="flex  items-center  h-[70%] w-full max-w-[50%]">
+              <div className="w-full">
+                {imagem ? (
+                  <div className="flex items-center justify-center">
                     <img
-                      className="h-8 w-8 "
-                      src={proximo}
-                      alt="icone proximo"
+                      src={imagePoke}
+                      alt={name}
+                      className="w-[200px] h-[200px]"
                     />
-                  </button>
-                </div>
-              ) : (
-                <img
-                  src={pokebola}
-                  alt={name}
-                  className="h-[200px] w-[200px]"
-                />
-              )}
+                    <button
+                      onClick={() => changeImage()}
+                      className="pt-auto pr-auto flex"
+                    >
+                      <img
+                        className="h-8 w-8 "
+                        src={proximo}
+                        alt="icone proximo"
+                      />
+                    </button>
+                  </div>
+                ) : (
+                  <img
+                    src={pokebola}
+                    alt={name}
+                    className="h-[200px] w-[200px]"
+                  />
+                )}
 
-              <div className="flex justify-center">
-                {pokemon.types.map((type, index) => {
-                  return (
-                    <div key={index} className="pokemon-type ">
-                      <div
-                        className={`pokemon-type-${type.type.name} gap-1`}
-                        style={{
-                          boxShadow: "4px 4px 4px rgba(0, 0, 0, 0.5)",
-                          borderRadius: "25px",
-                          alignItems: "center",
-                          textAlign: "center",
-                          height: "45px",
-                          width: "100px",
-                          marginRight: "6px",
-                          display: "flex",
-                          justifyContent: "center",
-                          color: "white",
-                        }}
-                      >
-                        <img
-                          src={
-                            typeImages[type.type.name]
-                              ? typeImages[type.type.name]
-                              : null
-                          }
-                          alt={type.type.name}
-                          className="h-[25px] w-[25px]"
-                        />
-                        {type.type.name}
-                      </div>
-                    </div>
-                  );
-                })}
+                <div className="flex justify-center">
+                  <TypePokemon pokemon={pokemon} typeImages={typeImages} />
+                </div>
               </div>
             </div>
-
-            <div>
-              {pokemon.stats.map((stats, index) => {
-                const statBar = (stats.base_stat / 100) * 100;
-                return (
-                  <div
-                    key={index}
-                    className="flex items-center "
-                    style={{ width: `${statBar}%` }}
-                  >
-                    <div
-                      className="bg-white h-[40px] p-2 m-2 rounded-xl flex justify-between min-w-[200px] max-w-[320px] sm:min-w-[180px] sm:max-w-[250px] md:min-w-[200px] md:max-w-[300px] lg:min-w-[300px] lg:max-w-[400px] flex-wrap"
-                      style={{ width: `${statBar}%` }}
-                    >
-                      <div
-                        className="bg-green-400 rounded-lg items-center flex"
-                        style={{ width: `${statBar}%` }}
-                      >
-                        <div className="absolute text-[22px] ">
-                          {stats.stat.name}
-                        </div>
-                      </div>
-                    </div>
-                    <div>{stats.base_stat}</div>
-                  </div>
-                );
-              })}
+            <div className="w-full h-full bg-red-500">
+              <div className="select-option bg-slate-500  flex w-full text-[30px] justify-evenly">
+                <button
+                  onClick={() => showStatusinfo()}
+                  className="w-1/2 bg-green-800"
+                >
+                  Status
+                </button>
+                <button
+                  onClick={() => showHabilitiesInfo()}
+                  className="w-1/2 bg-blue-800"
+                >
+                  Habilidades
+                </button>
+              </div>
+              <div className="w-full h-full bg-purple-800">
+                {showStatus === true ? <StatusInfo pokemon={pokemon} /> : null}
+                {showHabilities === true ? (
+                  <Moves
+                    handleMoveClick={handleMoveClick}
+                    pokemon={pokemon}
+                    selectedMove={selectedMove}
+                    showModal={showModal}
+                    setShowModal={setShowModal}
+                  />
+                ) : null}
+              </div>
             </div>
-          </div>
-          <h2 className="text-[25px] pl-36 text-white">Habilidades:</h2>
-          <div className="moves-pokemon">
-            {pokemon.moves.map((move, index) => {
-              return (
-                <div key={index} className="h-[45%] flex justify-center m-2">
-                  <div className="bg-slate-300 h-[40px] p-2 m-2 rounded-xl flex justify-center w-[500px] text-[100%]">
-                    {move.move.name}
-                  </div>
-                </div>
-              );
-            })}
           </div>
         </div>
       </div>

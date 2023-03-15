@@ -10,7 +10,7 @@
 .pokedex-grid {
  display: flex;
  flex-wrap: wrap;
- gap: 10px; 
+ gap: 20px; 
  padding-right: 5%;
  padding-left: 5%;
  

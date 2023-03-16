@@ -8,6 +8,7 @@ export default function Moves({
   setShowModal,
   selectedMove,
 }) {
+
   return (
     <div className="moves-pokemon flex ">
       {pokemon.moves[0] !== undefined ? (
@@ -30,13 +31,14 @@ export default function Moves({
           </div>
           <div className="w-full ml-[16px]">
             {selectedMove && (
+              <div className=" fixed w-[280px]">
               <MoveInfo
                 pokemon={pokemon}
                 move={selectedMove}
                 showModal={showModal}
                 setShowModal={setShowModal}
               />
-            )}
+             </div>)}
           </div>
         </div>
       ) : (

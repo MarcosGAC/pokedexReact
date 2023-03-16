@@ -10,6 +10,7 @@ import Moves from "./moves/moves";
 import StatusInfo from "./statusInfo/statusInfo";
 import TypePokemon from "./typePokemon/typePokemon";
 
+
 export default function ModalPokemon({
   closeModal,
   name,
@@ -20,17 +21,22 @@ export default function ModalPokemon({
   const [imagePoke, setImagePoke] = useState(imagem);
   const [selectedMove, setSelectedMove] = useState(null);
   const [showModal, setShowModal] = useState(false);
-  const [showStatus, setShowStatus] = useState(false);
-  const [showHabilities, setShowHabilities] = useState(false);
+  const [showStatus, setShowStatus] = useState(true);
+  const [showMoves, setShowMoves] = useState(false);
 
-  function showStatusinfo() {
-    setShowHabilities(false);
+ 
+
+
+  function MovesSelected(){
+    setShowStatus(false);
+    setShowMoves(true);
+  }
+  
+  function statuSelected(){
+    setShowMoves(false);
     setShowStatus(true);
   }
-  function showHabilitiesInfo() {
-    setShowStatus(false);
-    setShowHabilities(true);
-  }
+  
 
   async function handleMoveClick(move) {
     const moveData = await getPokemonMove(move.move.url);
@@ -132,24 +138,27 @@ export default function ModalPokemon({
                 </div>
               </div>
             </div>
-            <div className="w-full h-full bg-red-500">
-              <div className="select-option bg-slate-500  flex w-full text-[30px] justify-evenly">
+            <div className="w-full h-full m-2 border-l-[2px] ">
+              <div className="select-option flex w-full text-[30px] justify-evenly">
                 <button
-                  onClick={() => showStatusinfo()}
-                  className="w-1/2 bg-green-800"
+                  onClick={() => statuSelected()}
+                  className={`w-1/2 `}
+                  style={{backgroundColor: showStatus ? "green" : "gray"}}
                 >
                   Status
                 </button>
+                <div className="h-full w-2 bg-black transition-all duration-1000" />
                 <button
-                  onClick={() => showHabilitiesInfo()}
-                  className="w-1/2 bg-blue-800"
+                  onClick={() => MovesSelected()}
+                  className={`w-1/2 `}
+                  style={{backgroundColor:!showStatus ? "green" : "gray"}}
                 >
-                  Habilidades
+                  Moves
                 </button>
               </div>
-              <div className="w-full h-full bg-purple-800">
+              <div className="w-full h-full transition-all duration-1000">
                 {showStatus === true ? <StatusInfo pokemon={pokemon} /> : null}
-                {showHabilities === true ? (
+                {showMoves === true ? (
                   <Moves
                     handleMoveClick={handleMoveClick}
                     pokemon={pokemon}

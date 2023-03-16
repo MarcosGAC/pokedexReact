@@ -4,6 +4,7 @@ import pokebola from "../../assets/pokebola.png";
 import React, { useState } from "react";
 import ModalPokemon from "../modal/modal";
 import  typeImages  from "./iconesTypes";
+import { pokemonTypeColors } from "../pokemonsStyles/typecolors";
 
 
 const Pokemon = (props) => {
@@ -36,11 +37,13 @@ const Pokemon = (props) => {
           </h1>
           <div className="flex  ">
             {pokemon.types.map((type, index) => {
+            const typeofpoke = type.type.name
               return (
                 <div key={index}>
                   <div
                     className={`pokemon-type-${type.type.name}`}
                     style={{
+                      backgroundColor: pokemonTypeColors[typeofpoke],
                       boxShadow: "4px 4px 4px rgba(0, 0, 0, 0.5)",
                       borderRadius: "25px",
                       alignItems: "center",

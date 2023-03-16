@@ -1,5 +1,5 @@
-//componente para mostrar todos os moves do pokemon
 import MoveInfo from "./moveInfo/moveInfo";
+import "./move.css";
 
 export default function Moves({
   handleMoveClick,
@@ -9,41 +9,41 @@ export default function Moves({
   selectedMove,
 }) {
   return (
-    <div>
+    <div className="moves-pokemon flex ">
       {pokemon.moves[0] !== undefined ? (
-        <>
-          <h2 className="text-[25px] pl-36 text-white">Habilidades:</h2>
-          <div className="moves-pokemon">
+        <div className=" flex w-full">
+          <div className="pt-10 w-full ">
             {pokemon.moves.map((move, index) => {
               return (
                 <div
-                  onClick={() => handleMoveClick(move)}
+                  onMouseEnter={() => handleMoveClick(move)}
+                  onMouseLeave={() => setShowModal(false)}
                   key={index}
-                  className="h-[45%] flex justify-center m-2 "
+                  className="h-10 "
                 >
-                  <div className="bg-green-600 h-[40px] p-2 m-2 border-black border-[1px] rounded-xl flex justify-center w-[90%] text-[100%]">
+                  <div className="bg-green-600  h-[40px] p-2 m-2 border-black border-[1px] rounded-xl flex  w-[100%] text-[100%]">
                     {move.move.name}
                   </div>
                 </div>
               );
             })}
           </div>
-        </>
+          <div className="w-full ml-[16px]">
+            {selectedMove && (
+              <MoveInfo
+                pokemon={pokemon}
+                move={selectedMove}
+                showModal={showModal}
+                setShowModal={setShowModal}
+              />
+            )}
+          </div>
+        </div>
       ) : (
         <h1 className="text-[25px] text-white pt-10 text-center ">
           Não há nenhuma habilidade para ser exibida.
         </h1>
       )}
-      <div>
-        {" "}
-        {selectedMove && (
-          <MoveInfo
-            move={selectedMove}
-            showModal={showModal}
-            setShowModal={setShowModal}
-          />
-        )}
-      </div>
     </div>
   );
 }

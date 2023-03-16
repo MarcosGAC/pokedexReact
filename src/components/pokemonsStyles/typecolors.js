@@ -1,0 +1,21 @@
+export const pokemonTypeColors = {
+    fire: '#bb3e2d',
+    steel: '#355e71',
+    ice: '#2fb1bc',
+    fairy: '#e0558c',
+    psychic: '#c94944',
+    rock: '#585859',
+    ghost: '#4d3394',
+    dragon: '#3c529e',
+    dark: '#4c3682',
+    normal: '#4d64a4',
+    water: '#11538c',
+    grass: '#355e34',
+    poison: '#664461',
+    bug: '#569046',
+    electric: '#bb931c',
+    fighting: '#a74a5e',
+    ground: '#9e5533',
+    flying: '#a98472',
+  };
+  

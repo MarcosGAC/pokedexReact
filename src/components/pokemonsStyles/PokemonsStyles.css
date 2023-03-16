@@ -98,7 +98,7 @@
     background-image: linear-gradient(black,#493f62);
   }
   .pokemon-card-normal {
-    background-image: linear-gradient(black,#b5b9c4);
+    background-image: linear-gradient(black,#526086);
   }
   .pokemon-card-water {
     background-image: linear-gradient(black,#58abf6);
@@ -124,32 +124,7 @@
   .stats-container {
     background-color: green;
   }
-  .moves-pokemon {
-    height: 20%;
-    overflow-y: scroll;  
-  }
   
-  .moves-pokemon::-webkit-scrollbar {
-    width: 10px;
-  }
-  
-  /* Track */
-  .moves-pokemon::-webkit-scrollbar-track {
-    background: transparent;
-  }
-  
-  /* Handle */
-  .moves-pokemon::-webkit-scrollbar-thumb {
-    background: #888;
-    border-radius: 25px;
-  }
-  
-  /* Handle on hover */
-  .moves-pokemon::-webkit-scrollbar-thumb:hover {
-    background: #555;
-  }
-  
-
   /*Card styles */
 
   .card-container {
@@ -172,7 +147,7 @@
 
   /* card and modal style "types"*/
 
-  .pokemon-type-fire {
+/* .pokemon-type-fire {
   background-color: #bb3e2d;
 }
 .pokemon-type-steel {
@@ -225,4 +200,4 @@
 }
 .pokemon-type-flying {
   background-color: #a98472;
-}
+} */

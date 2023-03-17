@@ -69,11 +69,11 @@ export default function StatusInfo({ pokemon }) {
               style={{ width: `${statBar}%` }}
             >
              
-              <div className="fixed text-[18px] font-semibold font ">{stats.stat.name}</div> 
+              <div className="fixed text-[20px] font-semibold font ">{stats.stat.name}</div> 
               {barElements}
            
             </div>
-            <div>{statBar}</div>
+            <div className="text-[20px] font-semibold">{statBar}</div>
           </div>
         );
       })}

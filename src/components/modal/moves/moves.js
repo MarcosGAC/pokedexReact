@@ -18,11 +18,11 @@ export default function Moves({
               return (
                 <div
                   onMouseEnter={() => handleMoveClick(move)}
-                  onMouseLeave={() => setShowModal(false)}
+                  onMouseLeave={() => setShowModal(true)}
                   key={index}
                   className="h-10 "
                 >
-                  <div className="bg-green-600  h-[40px] p-2 m-2 border-black border-[1px] rounded-xl flex  w-[100%] text-[100%]">
+                  <div className="bg-green-600 cursor-pointer  font-semibold h-[40px] p-2 m-2 border-black border-[1px] rounded-xl flex  w-[100%] text-[100%] uppercase">
                     {move.move.name}
                   </div>
                 </div>

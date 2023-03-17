@@ -10,7 +10,6 @@ import Moves from "./moves/moves";
 import StatusInfo from "./statusInfo/statusInfo";
 import TypePokemon from "./typePokemon/typePokemon";
 
-
 export default function ModalPokemon({
   closeModal,
   name,
@@ -24,19 +23,15 @@ export default function ModalPokemon({
   const [showStatus, setShowStatus] = useState(true);
   const [showMoves, setShowMoves] = useState(false);
 
- 
-
-
-  function MovesSelected(){
+  function MovesSelected() {
     setShowStatus(false);
     setShowMoves(true);
   }
-  
-  function statuSelected(){
+
+  function statuSelected() {
     setShowMoves(false);
     setShowStatus(true);
   }
-  
 
   async function handleMoveClick(move) {
     const moveData = await getPokemonMove(move.move.url);
@@ -102,11 +97,17 @@ export default function ModalPokemon({
               <X size={21} />
             </button>
           </div>
+          {imagem === imagePoke ? (
+            <h1 className="pokemon-name text-white">{name.toUpperCase()}</h1>
+          ) : (
+            <div className="pokemon-name text-yellow-400">
+              {name.toUpperCase()} SHINY
+            </div>
+          )}
 
-          <h1 className="pokemon-name">{name.toUpperCase()}</h1>
           <div className="flex h-full">
             <div className="flex  items-center  h-[70%] w-full max-w-[50%]">
-              <div className="w-full">
+              <div className="w-full text-center">
                 {imagem ? (
                   <div className="flex items-center justify-center">
                     <img
@@ -142,16 +143,16 @@ export default function ModalPokemon({
               <div className="select-option flex w-full text-[30px] justify-evenly">
                 <button
                   onClick={() => statuSelected()}
-                  className={`w-1/2 `}
-                  style={{backgroundColor: showStatus ? "green" : "gray"}}
+                  className={`w-1/2  font-sans font-semibold`}
+                  style={{ backgroundColor: showStatus ? "green" : "gray" }}
                 >
                   Status
                 </button>
                 <div className="h-full w-2 bg-black transition-all duration-1000" />
                 <button
                   onClick={() => MovesSelected()}
-                  className={`w-1/2 `}
-                  style={{backgroundColor:!showStatus ? "green" : "gray"}}
+                  className={`w-1/2 font-sans font-semibold`}
+                  style={{ backgroundColor: !showStatus ? "green" : "gray" }}
                 >
                   Moves
                 </button>

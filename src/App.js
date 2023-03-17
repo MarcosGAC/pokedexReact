@@ -66,7 +66,7 @@ function App() {
         
         {notFound ? (
           <div className="w-full h-full">
-            <div className="text-[25px] flex justify-center pt-40">
+            <div className="text-[25px] flex justify-center">
               Não foi possivel encontrar o pokemon
             </div>
             <div className="w-full h-full">

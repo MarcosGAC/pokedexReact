@@ -5,19 +5,14 @@ import Navbar from "../navbar";
 const Searchbar = (props) => {
   const [search, setSearch] = useState("");
   const [searching, setSearching] = useState(false);
-  const [isSearchEmpty, setIsSearchEmpty] = useState(true);
+
   const { onSearch, searchbarOpen } = props;
   const exceptThisSymbols = ["."];
 
   const onChangeHandler = (e) => {
     const result = e.target.value.toLowerCase();
     setSearch(result);
-    if (result.length === 0) {
-      setIsSearchEmpty(true);
-      onSearch(undefined);
-    } else {
-      setIsSearchEmpty(false);
-    }
+  
   };
 
   const onClickBtnHandler = () => {
@@ -46,14 +41,6 @@ const Searchbar = (props) => {
     }
   }, [search, onSearch, searching]);
 
-  useEffect(() => {
-    if (isSearchEmpty) {
-      // Exibir todos os itens
-    } else {
-      // Exibir apenas os itens que correspondem à pesquisa
-    }
-    // Restante do código
-  }, [isSearchEmpty]);
 
   return (
     <>
@@ -66,6 +53,7 @@ const Searchbar = (props) => {
                 onKeyDown={(e) => exceptThisSymbols.includes(e.key) && e.preventDefault()}
                 placeholder="Buscar Pokemon por nome ou id"
                 onChange={onChangeHandler}
+                onKeyUp={onClickBtnHandler}
               />
             </div>
             <div className="searchbar-btn">

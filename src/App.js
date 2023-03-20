@@ -11,10 +11,10 @@ function App() {
   const [loading, setLoading] = useState(false);
   const [notFound, setNotFound] = useState(false);
   const [pokemons, setPokemons] = useState([]);
-  const [searchbarOpen, setSearchbarOpen] = useState(false)
+  const [searchbarOpen, setSearchbarOpen] = useState(false);
 
   const itensPerPage = 27;
- 
+
   const fetchPokemons = async () => {
     try {
       setLoading(true);
@@ -27,7 +27,7 @@ function App() {
       const results = await Promise.all(promises);
       setPokemons(results);
       setLoading(false);
-      setTotalPages(Math.ceil(data.count / itensPerPage))
+      setTotalPages(Math.ceil(data.count / itensPerPage));
     } catch (error) {
       console.log("fetchPokemons error: ", error);
     }
@@ -38,32 +38,28 @@ function App() {
   }, [page]);
 
   const onSearchHandler = async (pokemon) => {
-    if(!pokemon) {
+    if (!pokemon) {
       return fetchPokemons();
     }
 
-    setLoading(true)
-    setNotFound(false)
-    const result = await searchPokemon(pokemon)
-    if(!result) {
-      setNotFound(true)
+    setLoading(true);
+    setNotFound(false);
+    const result = await searchPokemon(pokemon);
+    if (!result) {
+      setNotFound(true);
     } else {
-      setPokemons([result])
-      setPage(0)
-      setTotalPages(1)
+      setPokemons([result]);
+      setPage(0);
+      setTotalPages(1);
     }
-    setLoading(false)
+    setLoading(false);
+  };
 
-  }
- 
-//console.log(pokemons)
- 
   return (
     <div className="bg-gradient-to-b from-red-500 to-yellow-500 ">
-      <div className=" pr-2 ">
-        
-        <Searchbar onSearch={onSearchHandler}  searchbarOpen={searchbarOpen}/>
-        
+      <div className="">
+        <Searchbar onSearch={onSearchHandler} searchbarOpen={searchbarOpen} />
+
         {notFound ? (
           <div className="w-full h-full">
             <div className="text-[25px] flex justify-center">

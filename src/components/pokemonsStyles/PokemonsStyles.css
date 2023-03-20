@@ -31,25 +31,6 @@
     border-radius: 25px;
     overflow: hidden;
     min-width: 400px;
-    
-    /* Estilos responsivos para mobile */
-    @media (max-width: 639px) {
-      margin: 0;
-      border-radius: 0;
-      max-height: unset;
-      height: unset;
-    }
-   
-    
-    /* Estilos responsivos para tablet */
-    @media (min-width: 640px) and (max-width: 1023px) {
-      margin: 0 2rem;
-    }
-    
-    /* Estilos responsivos para desktop */
-    @media (min-width: 1024px) {
-      margin: 0 auto;
-    }
   }
   
   
@@ -132,9 +113,10 @@
     width: 450px;
     max-width: 550px;
     border-radius: 25px;
-    @media (min-width: 640px) and (max-width: 740px) {
-      height:800px;
-      width: 90%;
+  }
+  @media (max-width: 600px){
+    .card-container{
+      height: 180px;
     }
   }
   .card-container-button {

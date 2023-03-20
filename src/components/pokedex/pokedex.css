@@ -24,3 +24,11 @@
   text-shadow: -1px 5px 0px rgb(35, 21, 118), -1px 5px 0px rgb(35, 21, 118),
     -1px 5px 0px rgb(35, 21, 118), -1px 5px 0px rgb(35, 21, 118);
 }
+@media (max-width: 600px){
+  .pokedex-header{
+    align-items: normal;
+  }
+  .pokedex-header h1 {
+    font-size: 35px;
+  }
+}

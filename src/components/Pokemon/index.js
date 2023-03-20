@@ -1,7 +1,7 @@
 import "../pokemonsStyles/PokemonsStyles.css";
-import Fundo from "../../assets/fundo.svg";
 import pokebola from "../../assets/pokebola.png";
 import React, { useState } from "react";
+import Fundo from "../../assets/fundo.png"
 import ModalPokemon from "../modal/modal";
 import typeImages from "./iconesTypes";
 import { pokemonTypeColors } from "../pokemonsStyles/typecolors";
@@ -18,19 +18,17 @@ const Pokemon = (props) => {
 
   return (
     <div
-      className={`pokemon-card-${pokemon.types[0].type.name} card-container   hover:border-2 border-white shadow-[30px_35px_35px_-15px_rgba(0,0,0,0.7)]`}
+      className={`pokemon-card-${pokemon.types[0].type.name} card-container  max-[600px]:h-[120px] hover:border-2 border-white shadow-[30px_35px_35px_-15px_rgba(0,0,0,0.7)]`}
     >
       <button
-        style={{
-          backgroundImage: `url(${Fundo})`,
-          backgroundRepeat: "no-repeat",
-        }}
+      style={{ backgroundImage: `url(${Fundo})`,
+      backgroundSize: '200px', }}
         onClick={() => openModal()}
-        className="w-full p-2 h-full flex justify-between rounded-[25px] " //img, titulo, numero vai td aqui //card-container-button
+        className={`w-full p-2 h-full flex justify-between rounded-[25px]    bg-no-repeat bg-right`} //img, titulo, numero vai td aqui //card-container-button
       >
-        <div className="w-[350px] text-white pl-4">
+        <div className="w-[350px] text-white pl-4 max-[600px]:w-[160px] ">
           <h2 className="font-sans text-[25px] text-left">#{pokemon.id}</h2>
-          <h1 className="font-sans text-[50px] text-left overflow-hidden text-ellipsis whitespace-nowrap max-w-[280px] italic">
+          <h1 className="font-sans text-[50px] text-left overflow-hidden text-ellipsis whitespace-nowrap max-w-[280px] italic max-[600px]:text-[30px]">
             {pokemon.name.toUpperCase()}
           </h1>
           <div className="flex  ">
@@ -39,16 +37,13 @@ const Pokemon = (props) => {
               return (
                 <div key={index}>
                   <div
-                    className={`pokemon-type-${type.type.name}`}
+                    className={`pokemon-type-${type.type.name} h-[50px] w-[100px] max-[600px]:w-[75px] pr-[6px] max-[600px]:h-[30px] `}
                     style={{
                       backgroundColor: pokemonTypeColors[typeofpoke],
                       boxShadow: "4px 4px 4px rgba(0, 0, 0, 0.5)",
                       borderRadius: "25px",
                       alignItems: "center",
                       textAlign: "center",
-                      height: "50px",
-                      width: "100px",
-                      marginRight: "6px",
                       display: "flex",
                       justifyContent: "center",
                       color: "white",
@@ -62,10 +57,10 @@ const Pokemon = (props) => {
                             : null
                         }
                         alt={type.type.name}
-                        className="h-[25px] w-[25px]"
+                        className="h-[25px] w-[25px] max-[600px]:w-[15px]"
                       />
 
-                      <div className="text-[15px] ">
+                      <div className="text-[15px] max-[600px]:text-[10px] ">
                         {type.type.name.toUpperCase()}
                       </div>
                     </div>
@@ -75,12 +70,12 @@ const Pokemon = (props) => {
             })}
           </div>
         </div>
-        <div className="w-25 absolute pl-[260px] ">
+      
           {pokemon.sprites.front_default ? (
             <img
               alt={pokemon.name}
               src={pokemon.sprites.front_default}
-              className="min-h-[180px] min-w-25 p-2 "
+              className="min-h-[180px] min-w-25 p-2 max-[600px]:h-[120px] max-[600px]:min-w-[150px]"
             />
           ) : (
             <img
@@ -89,7 +84,7 @@ const Pokemon = (props) => {
               className="h-[180px] w-[180px] p-4"
             />
           )}
-        </div>
+      
       </button>
 
       {open ? (

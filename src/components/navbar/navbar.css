@@ -9,3 +9,8 @@ nav {
 .navbar-img {
   width: 160px;
 }
+@media (max-width: 600px) {
+  .navbar-img{
+    width: 0px;
+  }
+}

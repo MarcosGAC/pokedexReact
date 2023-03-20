@@ -20,20 +20,6 @@ const Searchbar = (props) => {
     onSearch(search);
   };
 
-  let mostrar = "";
-  if (searchbarOpen === true) {
-    mostrar = "";
-  } else {
-    mostrar = "fixed";
-  }
-
-  const mudar = {
-    width: "100%",
-    zIndex: "50",
-    justifyContent: "space-between",
-    position: mostrar,
-  };
-
   useEffect(() => {
     if (searching) {
       onSearch(search);
@@ -45,11 +31,11 @@ const Searchbar = (props) => {
   return (
     <>
       {!searchbarOpen ? (
-        <div className="searchbar-container bg-red-900  shadow-lg shadow-zinc-900" style={mudar}>
-          <div className="flex items-center">
+        <div className="searchbar-container bg-red-900  fixed shadow-lg shadow-zinc-900 w-full justify-evenly">
+          <div className="searchbar-items flex items-center">
             <div className="searchbar">
               <input
-                className="w-[300px]"
+                className="w-auto"
                 onKeyDown={(e) => exceptThisSymbols.includes(e.key) && e.preventDefault()}
                 placeholder="Buscar Pokemon por nome ou id"
                 onChange={onChangeHandler}

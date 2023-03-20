@@ -31,25 +31,30 @@ const Pagination = (props) => {
       const debouncedCallback = debounce(callback, 200);
       setDebouncedClick(() => debouncedCallback);
 
-      if(loading){
-        setIsButtonDisabled(true)
-        ;}else{
-          setIsButtonDisabled(false)
-        }
-     
+      if (loading) {
+        setIsButtonDisabled(true);
+      } else {
+        setIsButtonDisabled(false);
+      }
     }
   }
 
   return (
     <div className="pagination-container pb-10">
       <div className="btnsize">
-        <button onClick={() => !loading ? handleClick(onLeftClick) : null } disabled={isButtonDisabled}>
+        <button
+          onClick={() => (!loading ? handleClick(onLeftClick) : null)}
+          disabled={isButtonDisabled}
+        >
           ◀
         </button>
         <div className="paginationtext">
           {page} de {totalPages}
         </div>
-        <button onClick={() => !loading ? handleClick(onRightClick) : null } disabled={isButtonDisabled} >
+        <button
+          onClick={() => (!loading ? handleClick(onRightClick) : null)}
+          disabled={isButtonDisabled}
+        >
           ▶
         </button>
       </div>

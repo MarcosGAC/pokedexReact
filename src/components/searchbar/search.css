@@ -4,8 +4,21 @@
   padding-right: 5%;
   align-items: center;
 }
+
 .searchbar {
   margin: 20px;
+}
+.searchbar-items {
+  width: 100%;
+}
+@media (max-width: 600px) {
+  .searchbar-container {
+    position: relative;
+    width: 100%;
+  }
+  .searchbar-items {
+    margin: auto;
+  }
 }
 .searchbar input {
   padding: 10px;
@@ -22,8 +35,7 @@
 }
 
 .pokemon-find-card {
-  margin-left: 15px;
-  width: 200px;
+  width: 80%;
   box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 5px;
   border: solid 2px;

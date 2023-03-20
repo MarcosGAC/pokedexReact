@@ -53,13 +53,20 @@ export default function ModalPokemon({
   function lockScroll(event) {
     if (
       event &&
-      (!event.target.closest(clicarFora) || event.target.closest(clicarX))
+      (!event.target.closest(clicarFora) ||
+        event.target.closest(clicarX) ||
+        event.keyCode === 27)
     ) {
       setSearchbarOpen(false);
       closeModal(false);
       document.body.style.overflow = "auto";
     }
   }
+  document.onkeydown = function (event) {
+    if (event.key === "Escape") {
+      setSearchbarOpen(false);
+    }
+  };
 
   useEffect(() => {
     function handleKeyDown(event) {
@@ -82,7 +89,10 @@ export default function ModalPokemon({
     <div
       className="modal-background pr-4"
       id="overlay"
-      onClick={(event) => lockScroll(event)}
+      onClick={(event) => {
+        event.stopPropagation();
+        lockScroll(event);
+      }}
     >
       <div className="modal-container" id="modal">
         <div

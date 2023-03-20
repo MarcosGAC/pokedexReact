@@ -3,9 +3,8 @@ import Fundo from "../../assets/fundo.svg";
 import pokebola from "../../assets/pokebola.png";
 import React, { useState } from "react";
 import ModalPokemon from "../modal/modal";
-import  typeImages  from "./iconesTypes";
+import typeImages from "./iconesTypes";
 import { pokemonTypeColors } from "../pokemonsStyles/typecolors";
-
 
 const Pokemon = (props) => {
   const { pokemon, searchbarOpen, setSearchbarOpen } = props;
@@ -14,9 +13,8 @@ const Pokemon = (props) => {
   function openModal() {
     setOpen(true);
     document.body.style.overflow = "hidden";
-     setSearchbarOpen(true)
+    setSearchbarOpen(true);
   }
-
 
   return (
     <div
@@ -27,7 +25,7 @@ const Pokemon = (props) => {
           backgroundImage: `url(${Fundo})`,
           backgroundRepeat: "no-repeat",
         }}
-        onClick={() => openModal() }
+        onClick={() => openModal()}
         className="w-full p-2 h-full flex justify-between rounded-[25px] " //img, titulo, numero vai td aqui //card-container-button
       >
         <div className="w-[350px] text-white pl-4">
@@ -37,7 +35,7 @@ const Pokemon = (props) => {
           </h1>
           <div className="flex  ">
             {pokemon.types.map((type, index) => {
-            const typeofpoke = type.type.name
+              const typeofpoke = type.type.name;
               return (
                 <div key={index}>
                   <div

@@ -33,7 +33,7 @@ const Pokedex = (props) => {
       </div>
 
       {loading ? (
-        <div className="p-10 "> carregando..
+        <div className="p-10"> carregando..
         <Loading />
         </div>
       ) : (
@@ -48,6 +48,7 @@ const Pokedex = (props) => {
       )}
      <div className="text-center justify-center flex">
        <Pagination
+          loading={loading}
           page={page + 1}
           totalPages={totalPages}
           onLeftClick={onLeftClickHandler}

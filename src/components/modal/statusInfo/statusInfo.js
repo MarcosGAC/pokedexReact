@@ -1,6 +1,6 @@
 export default function StatusInfo({ pokemon }) {
   return (
-    <div className="pt-10">
+    <div className="pt-10 max-[600px]:pt-0">
       
       {pokemon.stats.map((stats, index) => {
         const statBar = stats.base_stat;
@@ -65,15 +65,15 @@ export default function StatusInfo({ pokemon }) {
             style={{ width: `${statBar}%` }}
           >
             <div
-              className="bg-white h-[40px]  p-2 m-2 rounded-xl items-center flex justify-between min-w-[200px] max-w-[200px]"
+              className="bg-white h-[40px]  p-2 m-2 rounded-xl items-center flex justify-between min-w-[200px] max-w-[200px] max-[600px]:h-[28px] max-[600px]:min-w-[120px] max-[600px]:max-w-[120px]  "
               style={{ width: `${statBar}%` }}
             >
              
-              <div className="fixed text-[20px] font-semibold font ">{stats.stat.name}</div> 
+              <div className="fixed text-[20px] font-semibold max-[600px]:text-[15px] ">{stats.stat.name}</div> 
               {barElements}
            
             </div>
-            <div className="text-[20px] font-semibold">{statBar}</div>
+            <div className="text-[20px] max-[600px]:text-[14px] font-semibold">{statBar}</div>
           </div>
         );
       })}

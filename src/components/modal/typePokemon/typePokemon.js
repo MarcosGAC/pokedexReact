@@ -11,18 +11,14 @@ export default function TypePokemon({pokemon,typeImages}) {
         return (
           <div key={index} className="pokemon-type">
             <div
-              className={`pokemon-type-${typeofpoke} gap-1`}
+              className={`pokemon-type-${typeofpoke} justify-center h-[50px] w-[100px] max-[600px]:w-[75px] p-auto mr-2 max-[600px]:h-[30px]`}
               style={{
                 backgroundColor: pokemonTypeColors[typeofpoke],
                 boxShadow: "4px 4px 4px rgba(0, 0, 0, 0.5)",
                 borderRadius: "25px",
                 alignItems: "center",
                 textAlign: "center",
-                height: "45px",
-                width: "100px",
-                marginRight: "6px",
                 display: "flex",
-                justifyContent: "center",
                 color: "white",
               }}
             >
@@ -33,7 +29,7 @@ export default function TypePokemon({pokemon,typeImages}) {
                     : null
                 }
                 alt={type.type.name}
-                className="h-[25px] w-[25px]"
+                className="h-[25px] w-[25px]  max-[600px]:w-[15px]"
               />
               {type.type.name}
             </div>

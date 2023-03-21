@@ -94,23 +94,23 @@ export default function ModalPokemon({
         lockScroll(event);
       }}
     >
-      <div className="modal-container max-[600px]:max-w-[400px] max-[600px]:min-w-[300px] " id="modal">
+      <div className="modal-container max-[600px]:max-w-[400px] max-[600px]:min-w-[300px] max-[600px]:max-h-[420px] " id="modal">
         <div
-          className={`pokemon-card-${pokemon.types[0].type.name} w-[100%] h-[600px] rounded-[25px] `}
+          className={`pokemon-card-${pokemon.types[0].type.name} w-[100%] h-full max-[600px]:max-h-[420px] rounded-[25px] `}
          
         >
           <div className="h-10 flex">
             <button
               onClick={() => lockScroll()}
-              className="fecharmodal text-[25px] ml-[95%] s items-center text-white "
+              className="fecharmodal text-[25px] ml-[95%] items-center text-white max-[600px]:ml-[90%] "
             >
               <X size={21} />
             </button>
           </div>
           {imagem === imagePoke ? (
-            <h1 className="pokemon-name text-white">{name.toUpperCase()}</h1>
+            <h1 className="pl-10 font-bold text-[40px] text-white">{name.toUpperCase()}</h1>
           ) : (
-            <div className="pokemon-name text-yellow-400">
+            <div className="pl-10 font-bold text-[40px] text-yellow-400">
               {name.toUpperCase()} SHINY
             </div>
           )}
@@ -123,7 +123,7 @@ export default function ModalPokemon({
                     <img
                       src={imagePoke}
                       alt={name}
-                      className="w-[200px] h-[200px]"
+                      className="w-[200px] h-[200px] max-[600px]:w-[120px] max-[600px]:h-[120px]"
                     />
                     <button
                       onClick={() => changeImage()}
@@ -149,7 +149,7 @@ export default function ModalPokemon({
                 </div>
               </div>
             </div>
-            <div className="w-full h-full m-2 border-l-[2px] ">
+            <div className="w-full h-full m-2 border-l-[2px] max-[600px]:h-[70%] ">
               <div className="select-option flex w-full text-[30px] justify-evenly">
                 <button
                   onClick={() => statuSelected()}

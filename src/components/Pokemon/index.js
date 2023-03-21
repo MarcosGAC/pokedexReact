@@ -24,20 +24,21 @@ const Pokemon = (props) => {
       style={{ backgroundImage: `url(${Fundo})`,
       backgroundSize: '200px', }}
         onClick={() => openModal()}
-        className={`w-full p-2 h-full flex justify-between rounded-[25px]    bg-no-repeat bg-right`} //img, titulo, numero vai td aqui //card-container-button
+        className={`w-full p-2 h-full flex justify-between rounded-[25px] bg-no-repeat bg-right`} //img, titulo, numero vai td aqui //card-container-button
       >
-        <div className="w-[350px] text-white pl-4 max-[600px]:w-[160px] ">
+        <div className="w-[350px] text-white pl-4 max-[600px]:w-[160px]">
           <h2 className="font-sans text-[25px] text-left">#{pokemon.id}</h2>
           <h1 className="font-sans text-[50px] text-left overflow-hidden text-ellipsis whitespace-nowrap max-w-[280px] italic max-[600px]:text-[30px]">
             {pokemon.name.toUpperCase()}
           </h1>
-          <div className="flex  ">
+          <div className="flex
+          ">
             {pokemon.types.map((type, index) => {
               const typeofpoke = type.type.name;
               return (
                 <div key={index}>
                   <div
-                    className={`pokemon-type-${type.type.name} h-[50px] w-[100px] max-[600px]:w-[75px] pr-[6px] max-[600px]:h-[30px] `}
+                    className={`pokemon-type-${type.type.name} h-[50px] w-[100px] max-[600px]:w-[75px] p-auto mr-2 max-[600px]:h-[30px] `}
                     style={{
                       backgroundColor: pokemonTypeColors[typeofpoke],
                       boxShadow: "4px 4px 4px rgba(0, 0, 0, 0.5)",

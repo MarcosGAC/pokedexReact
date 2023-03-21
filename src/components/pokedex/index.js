@@ -18,8 +18,6 @@ const Pokedex = (props) => {
     }
   };
 
-  
-
   return (
     <div className="pokedex-container pt-[10%] ">
       <div className="pokedex-header ">

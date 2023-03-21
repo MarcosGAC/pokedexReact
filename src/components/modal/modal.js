@@ -94,10 +94,10 @@ export default function ModalPokemon({
         lockScroll(event);
       }}
     >
-      <div className="modal-container" id="modal">
+      <div className="modal-container max-[600px]:max-w-[400px] max-[600px]:min-w-[300px] " id="modal">
         <div
-          className={`pokemon-card-${pokemon.types[0].type.name}`}
-          style={{ width: "100%", height: "600px", borderRadius: "25px" }}
+          className={`pokemon-card-${pokemon.types[0].type.name} w-[100%] h-[600px] rounded-[25px] `}
+         
         >
           <div className="h-10 flex">
             <button

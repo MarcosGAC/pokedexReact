@@ -1,5 +1,5 @@
 .moves-pokemon {
-  height: 72%;
+  height: 70%;
   overflow-y: scroll;
   
   box-sizing: content-box; /* Adicione esta linha */

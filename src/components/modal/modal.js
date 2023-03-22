@@ -1,7 +1,6 @@
 import "../pokemonsStyles/PokemonsStyles.css";
 import pokebola from "../../assets/pokebola.png";
 import typeImages from "../Pokemon/iconesTypes";
-import proximo from "../../assets/proximo.svg";
 import { useState } from "react";
 import { useEffect } from "react";
 import { X } from "phosphor-react";
@@ -87,39 +86,34 @@ export default function ModalPokemon({
 
   return (
     <div
-      className="modal-background pr-4"
+      className="modal-background "
       id="overlay"
       onClick={(event) => {
         event.stopPropagation();
         lockScroll(event);
       }}
     >
-      <div className="modal-container max-[600px]:max-w-[400px] max-[600px]:min-w-[300px] max-[600px]:max-h-[420px] " id="modal">
+      <div className="modal-container max-[600px]:max-w-[400px] p-4 max-[600px]:min-w-[300px] max-[600px]:max-h-[420px] " id="modal">
         <div
-          className={`pokemon-card-${pokemon.types[0].type.name} w-[100%] h-full max-[600px]:max-h-[420px] rounded-[25px] `}
+          className={`pokemon-card-${pokemon.types[0].type.name} w-[100%] h-full max-[600px]:max-h-[420px] rounded-[40px] `}
          
         >
           <div className="h-10 flex">
             <button
               onClick={() => lockScroll()}
-              className="fecharmodal text-[25px] ml-[95%] items-center text-white max-[600px]:ml-[90%] "
+              className="fecharmodal text-[25px] pt-[10px] ml-[95%] items-center text-white max-[600px]:ml-[90%] "
             >
               <X size={21} />
             </button>
           </div>
-          {imagem === imagePoke ? (
+         
             <h1 className="pl-10 font-bold text-[40px] text-white">{name.toUpperCase()}</h1>
-          ) : (
-            <div className="pl-10 font-bold text-[40px] text-yellow-400">
-              {name.toUpperCase()} SHINY
-            </div>
-          )}
-
+         
           <div className="flex h-full">
             <div className="flex  items-center  h-[70%] w-full max-w-[50%]">
               <div className="w-full text-center">
                 {imagem ? (
-                  <div className="flex items-center justify-center">
+                  <div className="flex flex-col items-center justify-center">
                     <img
                       src={imagePoke}
                       alt={name}
@@ -127,13 +121,13 @@ export default function ModalPokemon({
                     />
                     <button
                       onClick={() => changeImage()}
-                      className="pt-auto pr-auto flex"
+                      className="font-bold pt-auto pr-auto flex justify-center text-[25px] pb-4 text-white uppercase"
                     >
-                      <img
-                        className="h-8 w-8 "
-                        src={proximo}
-                        alt="icone proximo"
-                      />
+                     {imagem === imagePoke ?(
+                      <h1 className="text-yellow-500">Shiny</h1>
+                     ):(
+                      <h1>Normal</h1>
+                     )}
                     </button>
                   </div>
                 ) : (
@@ -144,24 +138,24 @@ export default function ModalPokemon({
                   />
                 )}
 
-                <div className="flex justify-center">
+                <div className="flex justify-center pb-4">
                   <TypePokemon pokemon={pokemon} typeImages={typeImages} />
                 </div>
               </div>
             </div>
-            <div className="w-full h-full m-2 border-l-[2px] max-[600px]:h-[70%] ">
-              <div className="select-option flex w-full text-[30px] justify-evenly">
+            <div className="w-full h-full   max-[600px]:h-[70%] ">
+              <div className="select-option flex w-full text-[30px] justify-evenly max-[600px]:text-[25px] max-[600px]:justify-center">
                 <button
                   onClick={() => statuSelected()}
-                  className={`w-1/2  font-sans font-semibold`}
+                  className={`w-1/2  font-sans font-semibold max-[600px]:w-[40%]`}
                   style={{ backgroundColor: showStatus ? "green" : "gray" }}
                 >
                   Status
                 </button>
-                <div className="h-full w-2 bg-black transition-all duration-1000" />
+                <div className="h-full w-2 bg-black transition-all duration-1000 max-[600px]:text-[25px]" />
                 <button
                   onClick={() => MovesSelected()}
-                  className={`w-1/2 font-sans font-semibold`}
+                  className={`w-1/2 font-sans font-semibold max-[600px]:w-[40%]`}
                   style={{ backgroundColor: !showStatus ? "green" : "gray" }}
                 >
                   Moves

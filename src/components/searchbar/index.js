@@ -15,14 +15,6 @@ const Searchbar = (props) => {
     setSearching(true);
   };
 
-  const onKeyUpHandler = (e) => {
-    if (e.keyCode === 13) {
-      // verifique se a tecla pressionada é "Enter"
-      setSearching(true);
-      onSearch(search);
-    }
-  };
-
   useEffect(() => {
     if (searching) {
       const searchTimeout = setTimeout(() => {

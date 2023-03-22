@@ -147,15 +147,15 @@ export default function ModalPokemon({
               <div className="select-option flex w-full text-[30px] justify-evenly max-[600px]:text-[25px] max-[600px]:justify-center">
                 <button
                   onClick={() => statuSelected()}
-                  className={`w-1/2  font-sans font-semibold max-[600px]:w-[40%]`}
+                  className={`w-1/2  font-sans font-semibold max-[600px]:w-[40%] p-1`}
                   style={{ backgroundColor: showStatus ? "green" : "gray" }}
                 >
                   Status
                 </button>
-                <div className="h-full w-2 bg-black transition-all duration-1000 max-[600px]:text-[25px]" />
+                <div className=" w-2 bg-black" />
                 <button
                   onClick={() => MovesSelected()}
-                  className={`w-1/2 font-sans font-semibold max-[600px]:w-[40%]`}
+                  className={`w-1/2 font-sans font-semibold max-[600px]:w-[40%] p-1`}
                   style={{ backgroundColor: !showStatus ? "green" : "gray" }}
                 >
                   Moves

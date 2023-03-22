@@ -1,11 +1,13 @@
 .moves-pokemon {
   height: 70%;
   overflow-y: scroll;
-  
   box-sizing: content-box; /* Adicione esta linha */
-
 }
-
+@media (max-width:600px){
+  .moves-pokemon{
+    overflow-y: hidden;
+  }
+}
 .moves-pokemon::-webkit-scrollbar {
   width: 10px;
 

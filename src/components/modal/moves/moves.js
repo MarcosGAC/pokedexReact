@@ -12,7 +12,7 @@ export default function Moves({
     <div className="moves-pokemon flex  ">
       {pokemon.moves[0] !== undefined ? (
         <div className=" flex w-full ">
-          <div className="pt-10 w-full max-[600px]:pt-0 ">
+          <div className="pt-10 pl-3 w-full max-[600px]:pt-0 ">
             {pokemon.moves.map((move, index) => {
               return (
                 <div
@@ -21,7 +21,7 @@ export default function Moves({
                   key={index}
                   className="h-10 "
                 >
-                  <div className="bg-green-600 overflow-hidden max-[600px]:text-ellipsis max-[600px]:whitespace-nowrap max-[600px]:w-[150px] max-[600px]:text-[15px] cursor-pointer  font-semibold h-[40px] p-2 m-2 border-black border-[1px] rounded-xl flex  w-[100%] text-[100%] uppercase">
+                  <div className="bg-green-600 select-none overflow-hidden max-[600px]:text-ellipsis max-[600px]:whitespace-nowrap max-[600px]:w-[150px] max-[600px]:text-[15px] cursor-pointer  font-semibold h-[40px] p-2 m-2 border-black border-[1px] rounded-xl flex  w-[100%] text-[100%] uppercase">
                     {move.move.name}
                   </div>
                 </div>

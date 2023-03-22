@@ -1,6 +1,6 @@
 export default function StatusInfo({ pokemon }) {
   return (
-    <div className="pt-10 max-[600px]:pt-0">
+    <div className="pt-10 pl-3 max-[600px]:pt-0">
       
       {pokemon.stats.map((stats, index) => {
         const statBar = stats.base_stat;

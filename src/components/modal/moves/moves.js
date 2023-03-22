@@ -20,7 +20,7 @@ export default function Moves({
                    onMouseEnter={() => handleMoveClick(move)}
                    onMouseLeave={() => setShowModal(false)}
                    key={index}
-                  className="bg-green-600 rounded-xl select-none overflow-hidden max-[600px]:text-ellipsis max-[600px]:whitespace-nowrap max-[600px]:w-[150px] max-[600px]:text-[15px] cursor-pointer  font-semibold h-[40px] p-2 m-2 border-black border-[1px] flex  w-[100%] text-[100%] uppercase">
+                  className="bg-green-600 rounded-xl select-none outline-none overflow-hidden max-[600px]:text-ellipsis max-[600px]:whitespace-nowrap max-[600px]:w-[150px] max-[600px]:text-[15px] cursor-pointer  font-semibold h-[40px] p-2 m-2 border-black border-[1px] flex  w-[100%] text-[100%] uppercase">
                     {move.move.name}
                   </div>
                

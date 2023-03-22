@@ -93,7 +93,7 @@ export default function ModalPokemon({
         lockScroll(event);
       }}
     >
-      <div className="modal-container max-[600px]:max-w-[400px] p-4 max-[600px]:min-w-[300px] max-[600px]:max-h-[420px] " id="modal">
+      <div className="modal-container max-[600px]:max-w-[400px]  max-[600px]:min-w-[300px] max-[600px]:max-h-[420px] " id="modal">
         <div
           className={`pokemon-card-${pokemon.types[0].type.name} w-[100%] h-full max-[600px]:max-h-[420px] rounded-[40px] `}
          
@@ -152,7 +152,7 @@ export default function ModalPokemon({
                 >
                   Status
                 </button>
-                <div className=" w-2 bg-black" />
+                <div className=" w-2 bg-transparent" />
                 <button
                   onClick={() => MovesSelected()}
                   className={`w-1/2 font-sans font-semibold max-[600px]:w-[40%] p-1`}

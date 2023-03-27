@@ -5,13 +5,14 @@ import Pokedex from "./components/pokedex";
 import Searchbar from "./components/searchbar";
 import notfound from "./assets/notfound.jpg";
 
-function App() {
+export default function App() {
   const [page, setPage] = useState(0);
   const [totalPages, setTotalPages] = useState(0);
   const [loading, setLoading] = useState(false);
   const [notFound, setNotFound] = useState(false);
   const [pokemons, setPokemons] = useState([]);
   const [searchbarOpen, setSearchbarOpen] = useState(false);
+  const [selectedType, setSelectedType] = useState("");
 
   const itensPerPage = 27;
 
@@ -20,12 +21,18 @@ function App() {
       setLoading(true);
       setNotFound(false);
       const data = await getPokemons(itensPerPage, itensPerPage * page);
-      const promises = data.results.map(async (pokemon) => {
-        return await getPokemonData(pokemon.url);
-      });
-
-      const results = await Promise.all(promises);
-      setPokemons(results);
+      let results = await Promise.all(
+        data.results.map(async (pokemon) => {
+          return await getPokemonData(pokemon.url);
+        })
+      );
+      let filteredPokemons = results;
+      if (selectedType !== "") {
+        filteredPokemons = results.filter((pokemon) =>
+          pokemon.types.some((type) => type.type.name === selectedType)
+        );
+      }
+      setPokemons(filteredPokemons);
       setLoading(false);
       setTotalPages(Math.ceil(data.count / itensPerPage));
     } catch (error) {
@@ -35,7 +42,7 @@ function App() {
 
   useEffect(() => {
     fetchPokemons();
-  }, [page]);
+  }, [page, selectedType]);
 
   const onSearchHandler = async (pokemon) => {
     if (!pokemon) {
@@ -55,9 +62,14 @@ function App() {
     setLoading(false);
   };
 
+  const handleTypeChange = (event) => {
+    setSelectedType(event.target.value);
+    setPage(0);
+  };
+
   return (
     <div className="bg-gradient-to-b from-red-500 to-yellow-500 ">
-      <div className="">
+      <section className="">
         <Searchbar onSearch={onSearchHandler} searchbarOpen={searchbarOpen} />
 
         {notFound ? (
@@ -82,11 +94,11 @@ function App() {
             setPage={setPage}
             searchbarOpen={searchbarOpen}
             setSearchbarOpen={setSearchbarOpen}
+            selectedType={selectedType}
+            handleTypeChange={handleTypeChange}
           />
         )}
-      </div>
+      </section>
     </div>
   );
 }
-
-export default App;

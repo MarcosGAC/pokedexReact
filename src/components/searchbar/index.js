@@ -28,7 +28,7 @@ const Searchbar = (props) => {
   return (
     <>
       {!searchbarOpen ? (
-        <div className="searchbar-container bg-red-900 fixed shadow-lg shadow-zinc-900 w-full justify-evenly">
+        <nav className="searchbar-container bg-red-900 fixed shadow-lg shadow-zinc-900 w-full justify-evenly">
           <div className="searchbar-items flex items-center">
             <div className="searchbar">
               <input
@@ -57,7 +57,7 @@ const Searchbar = (props) => {
             </div>
           </div>
           <Navbar />
-        </div>
+        </nav>
       ) : null}
     </>
   );

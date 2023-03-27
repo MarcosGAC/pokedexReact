@@ -4,6 +4,7 @@ import "./App.css";
 import Pokedex from "./components/pokedex";
 import Searchbar from "./components/searchbar";
 import notfound from "./assets/notfound.jpg";
+import NotFound from "./components/notFound";
 
 export default function App() {
   const [page, setPage] = useState(0);
@@ -69,22 +70,10 @@ export default function App() {
 
   return (
     <div className="bg-gradient-to-b from-red-500 to-yellow-500 ">
+      <Searchbar onSearch={onSearchHandler} searchbarOpen={searchbarOpen} />
       <section className="">
-        <Searchbar onSearch={onSearchHandler} searchbarOpen={searchbarOpen} />
-
         {notFound ? (
-          <div className="w-full h-full">
-            <div className="text-[25px] flex justify-center">
-              Não foi possivel encontrar o pokemon
-            </div>
-            <div className="w-full h-full">
-              <img
-                className="w-full h-full  opacity-60"
-                src={notfound}
-                alt="notfound"
-              />
-            </div>
-          </div>
+          <NotFound notfound={notfound} />
         ) : (
           <Pokedex
             pokemons={pokemons}

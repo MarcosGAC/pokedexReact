@@ -5,6 +5,7 @@ import Pokedex from "./components/pokedex";
 import Searchbar from "./components/searchbar";
 import notfound from "./assets/notfound.jpg";
 import NotFound from "./components/notFound";
+import { PokemonsContext } from "./common/context/PokemonsContext";
 
 export default function App() {
   const [page, setPage] = useState(0);
@@ -34,16 +35,23 @@ export default function App() {
         );
       }
       setPokemons(filteredPokemons);
-      setLoading(false);
+  
+      // Add setTimeout function to delay the loading state change
+      setTimeout(() => {
+        setLoading(false);
+      }, 750);
+  
       setTotalPages(Math.ceil(data.count / itensPerPage));
     } catch (error) {
       console.log("fetchPokemons error: ", error);
     }
   };
+  
 
   useEffect(() => {
     fetchPokemons();
   }, [page, selectedType]);
+
 
   const onSearchHandler = async (pokemon) => {
     if (!pokemon) {
@@ -70,24 +78,30 @@ export default function App() {
 
   return (
     <div className="bg-gradient-to-b from-red-500 to-yellow-500 ">
-      <Searchbar onSearch={onSearchHandler} searchbarOpen={searchbarOpen} />
-      <section className="">
-        {notFound ? (
-          <NotFound notfound={notfound} />
-        ) : (
-          <Pokedex
-            pokemons={pokemons}
-            loading={loading}
-            page={page}
-            totalPages={totalPages}
-            setPage={setPage}
-            searchbarOpen={searchbarOpen}
-            setSearchbarOpen={setSearchbarOpen}
-            selectedType={selectedType}
-            handleTypeChange={handleTypeChange}
-          />
-        )}
-      </section>
+      <PokemonsContext.Provider
+        value={{
+          pokemons,
+          loading,
+          totalPages,
+          selectedType,
+          handleTypeChange,
+          searchbarOpen,
+        }}
+      >
+        <Searchbar onSearch={onSearchHandler} searchbarOpen={searchbarOpen} />
+        <section className="">
+          {notFound ? (
+            <NotFound notfound={notfound} />
+          ) : (
+            <Pokedex
+              page={page}
+              setPage={setPage}
+              searchbarOpen={searchbarOpen}
+              setSearchbarOpen={setSearchbarOpen}
+            />
+          )}
+        </section>
+      </PokemonsContext.Provider>
     </div>
   );
 }

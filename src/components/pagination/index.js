@@ -5,7 +5,7 @@ const Pagination = (props) => {
   const { page, totalPages, onLeftClick, onRightClick, loading } = props;
 
   return (
-    <div className="pagination-container pb-10">
+    <div className="pagination-container ">
       <div className="btnsize">
         <button
           onClick={onLeftClick}

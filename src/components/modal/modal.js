@@ -4,7 +4,7 @@ import typeImages from "../Pokemon/iconesTypes";
 import { useState } from "react";
 import { useEffect } from "react";
 import { X } from "phosphor-react";
-import { getPokemonMove } from "../../api";
+import { getPokemonMove } from "../api/GetPokemonMove";
 import Moves from "./moves/moves";
 import StatusInfo from "./statusInfo/statusInfo";
 import TypePokemon from "./typePokemon/typePokemon";
@@ -93,10 +93,12 @@ export default function ModalPokemon({
         lockScroll(event);
       }}
     >
-      <div className="modal-container max-[600px]:max-w-[400px]  max-[600px]:min-w-[300px] max-[600px]:max-h-[420px] " id="modal">
+      <div
+        className="modal-container max-[600px]:max-w-[400px]  max-[600px]:min-w-[300px] max-[600px]:max-h-[420px] "
+        id="modal"
+      >
         <div
           className={`pokemon-card-${pokemon.types[0].type.name} w-[100%] h-full max-[600px]:max-h-[420px] rounded-[40px] `}
-         
         >
           <div className="h-10 flex">
             <button
@@ -106,9 +108,11 @@ export default function ModalPokemon({
               <X size={21} />
             </button>
           </div>
-         
-            <h1 className="pl-10 font-bold text-[40px] text-white">{name.toUpperCase()}</h1>
-         
+
+          <h1 className="pl-10 font-bold text-[40px] text-white">
+            {name.toUpperCase()}
+          </h1>
+
           <div className="flex h-full">
             <div className="flex  items-center  h-[70%] w-full max-w-[50%]">
               <div className="w-full text-center">
@@ -123,11 +127,11 @@ export default function ModalPokemon({
                       onClick={() => changeImage()}
                       className="font-bold pt-auto pr-auto flex justify-center text-[25px] pb-4 text-white uppercase"
                     >
-                     {imagem === imagePoke ?(
-                      <h1 className="text-yellow-500">Shiny</h1>
-                     ):(
-                      <h1>Normal</h1>
-                     )}
+                      {imagem === imagePoke ? (
+                        <h1 className="text-yellow-500">Shiny</h1>
+                      ) : (
+                        <h1>Normal</h1>
+                      )}
                     </button>
                   </div>
                 ) : (

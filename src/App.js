@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { getPokemonData, getPokemons, searchPokemon } from "./api";
+import { getPokemonData } from "./components/api/GetPokemonData";
+import { getPokemons } from "./components/api/GetPokemons";
+import { searchPokemon } from "./components/api/Searchpokemon";
 import "./App.css";
 import Pokedex from "./components/pokedex";
 import Searchbar from "./components/searchbar";
-import notfound from "./assets/notfound.jpg";
 import NotFound from "./components/notFound";
 import { PokemonsContext } from "./common/context/PokemonsContext";
 
@@ -35,23 +36,21 @@ export default function App() {
         );
       }
       setPokemons(filteredPokemons);
-  
+
       // Add setTimeout function to delay the loading state change
       setTimeout(() => {
         setLoading(false);
       }, 750);
-  
+
       setTotalPages(Math.ceil(data.count / itensPerPage));
     } catch (error) {
       console.log("fetchPokemons error: ", error);
     }
   };
-  
 
   useEffect(() => {
     fetchPokemons();
   }, [page, selectedType]);
-
 
   const onSearchHandler = async (pokemon) => {
     if (!pokemon) {
@@ -91,7 +90,7 @@ export default function App() {
         <Searchbar onSearch={onSearchHandler} searchbarOpen={searchbarOpen} />
         <section className="">
           {notFound ? (
-            <NotFound notfound={notfound} />
+            <NotFound />
           ) : (
             <Pokedex
               page={page}

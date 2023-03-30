@@ -18,7 +18,7 @@ const Pagination = (props) => {
         </div>
         <button
           onClick={onRightClick}
-          disabled={loading} // adicionando a propriedade disabled
+          disabled={loading | page === totalPages} // adicionando a propriedade disabled
         >
           ▶
         </button>

@@ -7,6 +7,7 @@ import Pokedex from "./components/pokedex";
 import Searchbar from "./components/searchbar";
 import NotFound from "./components/notFound";
 import { PokemonsContext } from "./common/context/PokemonsContext";
+import { getPokemonsByType } from "./components/api/GetPokemonByType";
 
 export default function App() {
   const [page, setPage] = useState(0);
@@ -17,36 +18,41 @@ export default function App() {
   const [searchbarOpen, setSearchbarOpen] = useState(false);
   const [selectedType, setSelectedType] = useState("");
 
+
   const itensPerPage = 27;
 
   const fetchPokemons = async () => {
     try {
       setLoading(true);
       setNotFound(false);
-      const data = await getPokemons(itensPerPage, itensPerPage * page);
-      let results = await Promise.all(
-        data.results.map(async (pokemon) => {
-          return await getPokemonData(pokemon.url);
-        })
-      );
-      let filteredPokemons = results;
+  
       if (selectedType !== "") {
-        filteredPokemons = results.filter((pokemon) =>
-          pokemon.types.some((type) => type.type.name === selectedType)
+        const filteredPokemons = await getPokemonsByType(selectedType);
+        const startIndex = page * itensPerPage;
+        const endIndex = startIndex + itensPerPage;
+        setPokemons(filteredPokemons.slice(startIndex, endIndex));
+        setTotalPages(Math.ceil(filteredPokemons.length / itensPerPage));
+      } else {
+        const startIndex = page * itensPerPage;
+        const endIndex = startIndex + itensPerPage;
+        const data = await getPokemons(endIndex, startIndex);
+        let results = await Promise.all(
+          data.results.map(async (pokemon) => {
+            return await getPokemonData(pokemon.url);
+          })
         );
+        setPokemons(results);
+        setTotalPages(Math.ceil(data.count / itensPerPage));
       }
-      setPokemons(filteredPokemons);
-
-      // Add setTimeout function to delay the loading state change
+  
       setTimeout(() => {
         setLoading(false);
       }, 750);
-
-      setTotalPages(Math.ceil(data.count / itensPerPage));
     } catch (error) {
       console.log("fetchPokemons error: ", error);
     }
   };
+  
 
   useEffect(() => {
     fetchPokemons();

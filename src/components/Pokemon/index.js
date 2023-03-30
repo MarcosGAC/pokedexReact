@@ -44,7 +44,7 @@ const Pokemon = (props) => {
           <img
             alt={pokemon.name}
             src={pokemon.sprites.other.home.front_default}
-            className="h-[80%] min-w-25 w-1/2 p-2 max-[600px]:h-[120px] max-[600px]:min-w-[150px]"
+            className="h-[80%] min-w-25 w-1/2 p-2 max-[600px]:h-[220px] max-[600px]:min-w-[150px]"
           />
         ) : (
           <img

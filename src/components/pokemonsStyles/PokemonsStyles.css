@@ -109,16 +109,11 @@
 
   .card-container {
     flex-grow: 1;
-    height: 350px;
     width: 450px;
     max-width: 550px;
     border-radius: 25px;
   }
-  @media (max-width: 600px){
-    .card-container{
-      height: 180px;
-    }
-  }
+
   .card-container-button {
     height: 303px;
     width: 450px;

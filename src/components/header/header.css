@@ -1,6 +1,6 @@
 .titulo-garchomp {
   font-size: 50px;
-  color: green;
+  
 }
 .garchomp-img {
   width: 65%;
@@ -8,7 +8,8 @@
 @media (max-width: 600px) {
   .titulo-garchomp {
     font-size: 38px;
-    color: red;
+    padding: 0 10%;
+    
   }
   .garchomp-container {
     display: block;
@@ -27,5 +28,9 @@
   }
   .garchomp-img {
     width: 40%;
+  }
+  .link{
+    font-size: 12px;
+   
   }
 }

@@ -8,29 +8,23 @@
 @media (max-width: 600px) {
   .titulo-garchomp {
     font-size: 38px;
-    padding: 0 10%;
-    
   }
   .garchomp-container {
-    display: block;
+    display: flex;
+    flex-direction: column-reverse;
+    padding: 30px;
   }
   .garchomp-info {
     width: 100%;
-    padding: 5%;
+   
   }
-  .garchomp-descricao {
-    padding: 0 10%;
-  }
+ 
   .garchomp-img-container {
     width: 100%;
     display: flex;
     justify-content: center;
   }
   .garchomp-img {
-    width: 40%;
-  }
-  .link{
-    font-size: 12px;
-   
+    width: 60%;
   }
 }

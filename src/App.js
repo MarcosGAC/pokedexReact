@@ -9,6 +9,7 @@ import NotFound from "./components/notFound";
 import { PokemonsContext } from "./common/context/PokemonsContext";
 import { getPokemonsByType } from "./components/api/GetPokemonByType";
 import Footer from "./components/footer";
+import Header from "./components/header";
 
 export default function App() {
   const [page, setPage] = useState(0);
@@ -94,7 +95,8 @@ export default function App() {
           searchbarOpen,
         }}
       >
-        <Searchbar onSearch={onSearchHandler} searchbarOpen={searchbarOpen} />
+        <Header />
+        {/* {<Searchbar onSearch={onSearchHandler} searchbarOpen={searchbarOpen} />} */}
         <section className="">
           {notFound ? (
             <NotFound />

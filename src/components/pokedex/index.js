@@ -51,7 +51,7 @@ const Pokedex = (props) => {
     <PokemonsContext.Consumer>
       {({ pokemons, loading, totalPages, selectedType, handleTypeChange }) => (
         <>
-          <div className="pokedex-container pt-[10%] pb-10 ">
+          <div className="pokedex-container pb-10 ">
             <div className="pokedex-header ">
               <h1>Pokédex</h1>
 

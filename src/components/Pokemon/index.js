@@ -30,7 +30,7 @@ const Pokemon = (props) => {
       >
         <div className="min-w-[200px] w-1/2 text-white pl-4 max-[600px]:w-[160px]">
           <h2 className="font-sans text-[25px] text-left">#{pokemon.id}</h2>
-          <h1 className="font-sans text-[50px] text-left overflow-hidden text-ellipsis whitespace-nowrap max-w-[280px] italic max-[600px]:text-[30px]">
+          <h1 className="font-sans text-[35px] font-semibold text-left overflow-hidden text-ellipsis whitespace-nowrap max-w-[300px] italic max-[600px]:text-[30px]">
             {pokemon.name.toUpperCase()}
           </h1>
           <div

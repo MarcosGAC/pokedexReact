@@ -21,7 +21,7 @@ export default function App() {
   const [selectedType, setSelectedType] = useState("");
 
 
-  const itensPerPage = 15;
+  const itensPerPage = 27;
 
   const fetchPokemons = async () => {
     try {

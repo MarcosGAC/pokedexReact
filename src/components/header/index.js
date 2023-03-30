@@ -3,8 +3,8 @@ import garchomp from "../../assets/garchomp.png";
 
 export default function Header() {
   return (
-    <div className="h-[100vh] w-full flex items-center justify-evenly bg-indigo-900">
-      <div className="w-1/2">
+    <div className="h-[100vh] w-full flex items-center justify-evenly bg-indigo-900 max-[600px]:inline">
+      <div className="w-[50%] ">
         <div className=" text-white w-[80%]">
           <h1 className="text-[80px]">GARCHOMP</h1>
           <p className="text-[20px]">

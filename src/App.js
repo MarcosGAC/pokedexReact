@@ -8,6 +8,7 @@ import Searchbar from "./components/searchbar";
 import NotFound from "./components/notFound";
 import { PokemonsContext } from "./common/context/PokemonsContext";
 import { getPokemonsByType } from "./components/api/GetPokemonByType";
+import Footer from "./components/footer";
 
 export default function App() {
   const [page, setPage] = useState(0);
@@ -19,7 +20,7 @@ export default function App() {
   const [selectedType, setSelectedType] = useState("");
 
 
-  const itensPerPage = 27;
+  const itensPerPage = 15;
 
   const fetchPokemons = async () => {
     try {
@@ -82,7 +83,7 @@ export default function App() {
   };
 
   return (
-    <div className="bg-gradient-to-b from-red-500 to-yellow-500 ">
+    <div className="bg-slate-200">
       <PokemonsContext.Provider
         value={{
           pokemons,
@@ -107,6 +108,7 @@ export default function App() {
           )}
         </section>
       </PokemonsContext.Provider>
+      <Footer />
     </div>
   );
 }

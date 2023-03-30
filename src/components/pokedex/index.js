@@ -7,13 +7,11 @@ import "./pokedex.css";
 
 const Pokedex = (props) => {
   const {
-    loading,
     page,
     totalPages,
     setPage,
     searchbarOpen,
     setSearchbarOpen,
-    handleTypeChange,
   } = props;
 
   const onLeftClickHandler = () => {
@@ -53,7 +51,7 @@ const Pokedex = (props) => {
     <PokemonsContext.Consumer>
       {({ pokemons, loading, totalPages, selectedType, handleTypeChange }) => (
         <>
-          <div className="pokedex-container pt-[10%] ">
+          <div className="pokedex-container pt-[10%] pb-10 ">
             <div className="pokedex-header ">
               <h1>Pokédex</h1>
 
@@ -109,15 +107,6 @@ const Pokedex = (props) => {
                 </section>
               </div>
             )}
-            <div className="text-center justify-center flex">
-              <Pagination
-                loading={loading}
-                page={page + 1}
-                totalPages={totalPages}
-                onLeftClick={onLeftClickHandler}
-                onRightClick={onRightClickHandler}
-              />
-            </div>
           </div>
         </>
       )}

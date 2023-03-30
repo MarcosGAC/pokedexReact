@@ -21,7 +21,7 @@ const Pokemon = (props) => {
   return (
     <div
     //{pokemon-card-${pokemon.types[0].type.name}}
-    className={`bg-gray-900 card-container  max-[600px]:h-[120px]  shadow-[30px_35px_35px_-15px_rgba(0,0,0,0.7)]`}
+    className={`bg-gray-900 card-container  max-[600px]:h-[220px]  shadow-[30px_35px_35px_-15px_rgba(0,0,0,0.7)]`}
     >
       <div className="h-[80%]">
       <div

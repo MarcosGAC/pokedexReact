@@ -1,16 +1,9 @@
-import React, { useState } from "react";
-import garchomp from "../../assets/garchomp.png";
 import typeImages from "../Pokemon/iconesTypes";
-import enhanced from "../../sounds/enhanced.mp3";
+import garchomp from "../../assets/garchomp.png"
 
 export default function Header() {
 
-  const playAudio = (audioFile) => {
-    const audio = new Audio(audioFile);
-    audio.volume = 0.1
-    audio.play();
-  };
- 
+
 
   return (
     <div>
@@ -32,10 +25,10 @@ export default function Header() {
     md:flex-col md:h-full md:w-20"
           >
             <div className="w-full h-px bg-gradient-to-l from-zinc-100 dark:from-neutral-900 md:w-px md:h-1/2 md:bg-gradient-to-t" />
-            <button onClick={() => playAudio(enhanced)}>
-                clique no icone
+           
+             
               <img src={typeImages.dragon} alt="icone dragon" />
-            </button>
+     
             <div className=" w-full h-px bg-gradient-to-r from-zinc-100 dark:from-neutral-900 md:w-px md:h-1/2 md:bg-gradient-to-b" />
           </div>
           <img

@@ -26,37 +26,35 @@ const Pokedex = (props) => {
     }
   };
 
-  const options = [
-    { tipo: "flying" },
-    { tipo: "dark" },
-    { tipo: "bug" },
-    { tipo: "ghost" },
-    { tipo: "grass" },
-    { tipo: "dragon" },
-    { tipo: "poison" },
-    { tipo: "fairy" },
-    { tipo: "fighting" },
-    { tipo: "electric" },
-    { tipo: "ground" },
-    { tipo: "ice" },
-    { tipo: "normal" },
-    { tipo: "psychic" },
-    { tipo: "rock" },
-    { tipo: "steel" },
-    { tipo: "water" },
-    { tipo: "fire" },
-  ];
+  // const options = [
+  //   { tipo: "flying" },
+  //   { tipo: "dark" },
+  //   { tipo: "bug" },
+  //   { tipo: "ghost" },
+  //   { tipo: "grass" },
+  //   { tipo: "dragon" },
+  //   { tipo: "poison" },
+  //   { tipo: "fairy" },
+  //   { tipo: "fighting" },
+  //   { tipo: "electric" },
+  //   { tipo: "ground" },
+  //   { tipo: "ice" },
+  //   { tipo: "normal" },
+  //   { tipo: "psychic" },
+  //   { tipo: "rock" },
+  //   { tipo: "steel" },
+  //   { tipo: "water" },
+  //   { tipo: "fire" },
+  // ];
 
   return (
     <PokemonsContext.Consumer>
       {({ pokemons, loading, totalPages, selectedType, handleTypeChange }) => (
-        <>
+        <>    
           <div className="pokedex-container pb-10 ">
-            <div className="pokedex-header ">
-              <h1>Pokédex</h1>
-
+            <div className="pokedex-header "> 
               <div>
-                <select
+                {/* <select
                   style={{ backgroundColor: pokemonTypeColors[selectedType] }}
                   className="w-30 h-10 text-[18px] rounded-md"
                   value={selectedType}
@@ -65,9 +63,10 @@ const Pokedex = (props) => {
                   <option style={{ backgroundColor: "white" }} value="">
                     Todos
                   </option>
-                  {options.map((opt) => {
+                  {options.map((opt,index) => {
                     return (
                       <option
+                      key={index}
                         style={{ backgroundColor: pokemonTypeColors[opt.tipo] }}
                         value={opt.tipo}
                       >
@@ -75,7 +74,7 @@ const Pokedex = (props) => {
                       </option>
                     );
                   })}
-                </select>
+                </select> */}
               </div>
 
               <Pagination

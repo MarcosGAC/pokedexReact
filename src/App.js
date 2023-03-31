@@ -55,7 +55,6 @@ export default function App() {
     }
   };
   
-
   useEffect(() => {
     fetchPokemons();
   }, [page, selectedType]);
@@ -78,11 +77,6 @@ export default function App() {
     setLoading(false);
   };
 
-  const handleTypeChange = (event) => {
-    setSelectedType(event.target.value);
-    setPage(0);
-  };
-
   return (
     <div className="bg-slate-200">
       <PokemonsContext.Provider
@@ -91,12 +85,11 @@ export default function App() {
           loading,
           totalPages,
           selectedType,
-          handleTypeChange,
           searchbarOpen,
         }}
       >
         <Header />
-        {/* {<Searchbar onSearch={onSearchHandler} searchbarOpen={searchbarOpen} />} */}
+        <Searchbar pokemons={pokemons} onSearch={onSearchHandler} searchbarOpen={searchbarOpen} setSelectedType={setSelectedType}/>
         <section className="">
           {notFound ? (
             <NotFound />

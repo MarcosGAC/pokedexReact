@@ -49,9 +49,3 @@
   height: 150px;
   width: 150px;
 }
-
-.swiper-button-next::after, .swiper-button-prev::after{
- color: black;
- display: flex;
- justify-content: space-between;
-}

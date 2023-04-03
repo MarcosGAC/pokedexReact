@@ -9,7 +9,7 @@ const Searchbar = (props) => {
   const [searching, setSearching] = useState(false);
   const exceptThisSymbols = ["."];
 
-  const { onSearch, searchbarOpen,setSelectedType } = props;
+  const { onSearch, searchbarOpen, setSelectedType } = props;
 
   const onChangeHandler = (e) => {
     const result = e.target.value.toLowerCase();
@@ -51,8 +51,40 @@ const Searchbar = (props) => {
   return (
     <>
       {!searchbarOpen ? (
-        <nav className="searchbar-container shadow-lg shadow-zinc-900 w-full justify-evenly">
-          <div className="searchbar-items flex items-center">
+        <nav className="searchbar-container shadow-lg shadow-zinc-900 w-full ">
+          <div className="searchbar-items  ">
+        
+              <div className="col">
+                {options.map((opt, index) => {
+                  const tipodaimg = typeImages[opt.tipo];
+
+                  return (
+                    <button
+                      className=" ml-6 m-1 w-25 p-2 h-10 rounded-2xl"
+                      key={index}
+                      style={{ backgroundColor: pokemonTypeColors[opt.tipo] }}
+                      value={opt.tipo}
+                      onClick={() => setSelectedType(opt.tipo)}
+                    >
+                      <div className="flex items-center  uppercase text-white">
+                        <img
+                          key={index}
+                          className="h-6 w-6"
+                          src={tipodaimg}
+                          alt="icone tipo"
+                        />
+                        {window.innerWidth > 600 ? (
+                          <p>{opt.tipo}</p>
+                          )
+                        : null
+                        }
+                      </div>
+                    </button>
+                  );
+                })}
+           
+            </div>
+            <div className="flex items-center">
             <div className="searchbar">
               <input
                 className="w-auto"
@@ -78,26 +110,7 @@ const Searchbar = (props) => {
                 Buscar
               </button>
             </div>
-            <div className="">
-            {options.map((opt,index) => {
-              const tipodaimg = typeImages[opt.tipo]
-             
-                    return (
-                      <button
-                      className="m-1 w-20 h-10 rounded-2xl"
-                      key={index}
-                        style={{ backgroundColor: pokemonTypeColors[opt.tipo] }}
-                        value={opt.tipo}
-                        onClick={()=>setSelectedType(opt.tipo)}
-                      >
-                         <div className="flex items-center justify-around">
-                    <img key={index} className="h-6 w-6" src={tipodaimg} alt="icone tipo"/>
-                    {opt.tipo}
-                    </div>
-                      </button>
-                    );
-                  })}
-            </div>      
+            </div>
           </div>
         </nav>
       ) : null}

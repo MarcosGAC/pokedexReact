@@ -20,7 +20,7 @@ export default function Header({setMode,mode}) {
         <div className="w-full h-full flex flex-col-reverse items-center justify-evenly pb-10 text-zinc-100 dark:text-neutral-900 md:flex-row">
           <div className="w-full font-medium gap-5 flex flex-col px-4 md:w-full xl:w-1/3">
             <h1 style={mode ? {color: "white"} :{ color: "black"}} className="text-6xl font-bold uppercase">GARCHOMP</h1>
-            <p style={mode ? {color: "white"} :{ color: "black"}} className="text-[20px]">
+            <p style={mode ? {color: "white"} :{ color: "black"}} className="text-[20px] max-[600px]:text-[18px]">
               Quando dobra o corpo e estende as asas, Garchomp fica parecendo um
               jato. Consegue voar na velocidade sônica, graças a isso, ele nunca
               deixa a sua presa escapar. Quando está em velocidade elevada, suas

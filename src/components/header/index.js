@@ -1,14 +1,26 @@
 import typeImages from "../Pokemon/iconesTypes";
 import garchomp from "../../assets/garchomp.png";
+import light from "../../assets/brilho.png"
+import dark from "../../assets/escuro.png"
 
-export default function Header() {
+export default function Header({setMode,mode}) {
+  function changeMode(){
+    if(!mode){
+      setMode(true)
+    }else{
+      setMode(false)
+    }
+  }
   return (
     <div>
       <div className="w-full h-screen bg-indigo-800">
+        <div className="flex justify-end">
+      <button className=" pt-2" onClick={() =>changeMode()}>{mode ?<img className="h-20" alt="light" src={light}/> : <img className="h-20" src={dark} alt="dark"/>} </button>
+      </div>
         <div className="w-full h-full flex flex-col-reverse items-center justify-evenly pb-10 text-zinc-100 dark:text-neutral-900 md:flex-row">
           <div className="w-full font-medium gap-5 flex flex-col px-4 md:w-full xl:w-1/3">
-            <h1 className="text-6xl font-bold uppercase">GARCHOMP</h1>
-            <p>
+            <h1 style={mode ? {color: "white"} :{ color: "black"}} className="text-6xl font-bold uppercase">GARCHOMP</h1>
+            <p style={mode ? {color: "white"} :{ color: "black"}} className="text-[20px]">
               Quando dobra o corpo e estende as asas, Garchomp fica parecendo um
               jato. Consegue voar na velocidade sônica, graças a isso, ele nunca
               deixa a sua presa escapar. Quando está em velocidade elevada, suas

@@ -2,7 +2,7 @@ import React from "react";
 
 export default function Footer() {
   return (
-    <div className="h-[150px] bg-black">
+    <div className="h-[150px] bg-black text-center pt-10">
       <h1 className="text-white text-[15px]">
         {" "}
         Pokémon is Copyright Gamefreak, Nintendo and The Pokémon Company

@@ -19,6 +19,7 @@ export default function App() {
   const [pokemons, setPokemons] = useState([]);
   const [searchbarOpen, setSearchbarOpen] = useState(false);
   const [selectedType, setSelectedType] = useState("");
+  const [mode,setMode] = useState(false)
 
 
   const itensPerPage = 27;
@@ -77,8 +78,10 @@ export default function App() {
     setLoading(false);
   };
 
+
+
   return (
-    <div className="bg-slate-200">
+    <div className={mode ? "bg-slate-200" : "bg-slate-700"}>
       <PokemonsContext.Provider
         value={{
           pokemons,
@@ -88,7 +91,7 @@ export default function App() {
           searchbarOpen,
         }}
       >
-        <Header />
+        <Header setMode={setMode} mode={mode}/>
         <Searchbar pokemons={pokemons} onSearch={onSearchHandler} searchbarOpen={searchbarOpen} setSelectedType={setSelectedType}/>
         <section id="Pokedex">
           {notFound ? (

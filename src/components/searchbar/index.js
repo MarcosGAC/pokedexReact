@@ -3,6 +3,7 @@ import "./search.css";
 
 import { pokemonTypeColors } from "../pokemonsStyles/typecolors";
 import typeImages from "../Pokemon/iconesTypes";
+import { PokedexRef } from "../ref/pokedexref";
 
 const Searchbar = (props) => {
   const [search, setSearch] = useState("");
@@ -48,9 +49,6 @@ const Searchbar = (props) => {
     { tipo: "fire" },
   ];
 
-   const PokedexRef = 
-    { id: 1, text: 'Pokedex', url: '#Pokedex'}
-
 
   return (
     <>
@@ -71,7 +69,7 @@ const Searchbar = (props) => {
                       onClick={() => setSelectedType(opt.tipo)}
                     >
                       <a href={PokedexRef.url}>
-                      <div className="flex items-center  uppercase text-white">
+                      <div className="flex items-center justify-around uppercase text-white">
                         <img
                           key={index}
                           className="h-6 w-6"
@@ -93,7 +91,7 @@ const Searchbar = (props) => {
             <div className="flex items-center">
             <div className="searchbar">
               <input
-                className="w-auto"
+                className="w-auto border-[1px] border-gray-400 focus:border-black"
                 onKeyDown={(e) => {
                   if (e.key === " ") {
                     e.preventDefault();
@@ -106,8 +104,9 @@ const Searchbar = (props) => {
               />
             </div>
             <div className="searchbar-btn">
+            <a href={PokedexRef.url}>
               <button
-                className="flex items-center text-[20px] "
+                className="flex items-center text-[20px] rounded-full bg-blue-900 p-2 text-white shadow-sm shadow-black"
                 onClick={() => {
                   setSearching(true);
                   onSearch(search);
@@ -115,6 +114,7 @@ const Searchbar = (props) => {
               >
                 Buscar
               </button>
+              </a>
             </div>
             </div>
           </div>

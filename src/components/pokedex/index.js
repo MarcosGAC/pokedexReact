@@ -2,7 +2,6 @@ import { PokemonsContext } from "../../common/context/PokemonsContext";
 import Loading from "../loading";
 import Pagination from "../pagination";
 import Pokemon from "../Pokemon";
-import { pokemonTypeColors } from "../pokemonsStyles/typecolors";
 import "./pokedex.css";
 
 const Pokedex = (props) => {
@@ -26,8 +25,6 @@ const Pokedex = (props) => {
     }
   };
 
-
-
   return (
     <PokemonsContext.Consumer>
       {({ pokemons, loading, totalPages}) => (
@@ -36,7 +33,6 @@ const Pokedex = (props) => {
             <div className="pokedex-header "> 
               <div>
               </div>
-
               <Pagination
                 page={page + 1}
                 totalPages={totalPages}
@@ -44,7 +40,6 @@ const Pokedex = (props) => {
                 onRightClick={onRightClickHandler}
               />
             </div>
-
             {loading ? (
               <div className="p-10">
                 <Loading />

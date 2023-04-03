@@ -48,11 +48,15 @@ const Searchbar = (props) => {
     { tipo: "fire" },
   ];
 
+   const PokedexRef = 
+    { id: 1, text: 'Pokedex', url: '#Pokedex'}
+
+
   return (
     <>
       {!searchbarOpen ? (
         <nav className="searchbar-container shadow-lg shadow-zinc-900 w-full ">
-          <div className="searchbar-items  ">
+          <div className="searchbar-items">
         
               <div className="col">
                 {options.map((opt, index) => {
@@ -66,6 +70,7 @@ const Searchbar = (props) => {
                       value={opt.tipo}
                       onClick={() => setSelectedType(opt.tipo)}
                     >
+                      <a href={PokedexRef.url}>
                       <div className="flex items-center  uppercase text-white">
                         <img
                           key={index}
@@ -79,6 +84,7 @@ const Searchbar = (props) => {
                         : null
                         }
                       </div>
+                      </a>
                     </button>
                   );
                 })}

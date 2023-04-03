@@ -90,7 +90,7 @@ export default function App() {
       >
         <Header />
         <Searchbar pokemons={pokemons} onSearch={onSearchHandler} searchbarOpen={searchbarOpen} setSelectedType={setSelectedType}/>
-        <section className="">
+        <section id="Pokedex">
           {notFound ? (
             <NotFound />
           ) : (

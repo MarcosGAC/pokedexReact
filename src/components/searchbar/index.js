@@ -56,7 +56,7 @@ const Searchbar = (props) => {
         <nav className="searchbar-container shadow-lg shadow-zinc-900 w-full ">
           <div className="searchbar-items">
         
-              <div className="col">
+              <div className="col items-center">
                 {options.map((opt, index) => {
                   const tipodaimg = typeImages[opt.tipo];
 
@@ -86,7 +86,7 @@ const Searchbar = (props) => {
                     </button>
                   );
                 })}
-           
+           <a href={PokedexRef.url}><button onClick={()=>setSelectedType("") } className=" ml-6 align-top mt-1 w-[60px] p-2 h-10 rounded-2xl bg-white">All</button>  </a>
             </div>
             <div className="flex items-center">
             <div className="searchbar">

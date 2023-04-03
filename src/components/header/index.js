@@ -15,11 +15,11 @@ export default function Header({setMode,mode}) {
     <div>
       <div className="w-full h-screen bg-indigo-800">
         <div className="flex justify-end">
-      <button className=" pt-2" onClick={() =>changeMode()}>{mode ?<img className="h-20" alt="light" src={light}/> : <img className="h-20" src={dark} alt="dark"/>} </button>
+      <button className=" pt-2" onClick={() =>changeMode()}>{mode ?<img className="h-20 max-[600px]:h-[38px]" alt="light" src={light}/> : <img className="h-20 max-[600px]:h-[38px]" src={dark} alt="dark"/>} </button>
       </div>
         <div className="w-full h-full flex flex-col-reverse items-center justify-evenly pb-10 text-zinc-100 dark:text-neutral-900 md:flex-row">
           <div className="w-full font-medium gap-5 flex flex-col px-4 md:w-full xl:w-1/3">
-            <h1 style={mode ? {color: "white"} :{ color: "black"}} className="text-6xl font-bold uppercase">GARCHOMP</h1>
+            <h1 style={mode ? {color: "white"} :{ color: "black"}} className="text-6xl max-[600px]:text-4xl font-bold uppercase">GARCHOMP</h1>
             <p style={mode ? {color: "white"} :{ color: "black"}} className="text-[20px] max-[600px]:text-[18px]">
               Quando dobra o corpo e estende as asas, Garchomp fica parecendo um
               jato. Consegue voar na velocidade sônica, graças a isso, ele nunca
@@ -35,7 +35,7 @@ export default function Header({setMode,mode}) {
             <div className="w-full h-px bg-gradient-to-l from-zinc-100 dark:from-neutral-900 md:w-px md:h-1/2 md:bg-gradient-to-t" />
 
             <img
-              className="w-[120px]"
+              className="w-[120px] max-[600px]:w-[80px]"
               src={typeImages.dragon}
               alt="icone dragon"
             />

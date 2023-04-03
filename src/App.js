@@ -81,7 +81,7 @@ export default function App() {
 
 
   return (
-    <div className={mode ? "bg-slate-200" : "bg-slate-700"}>
+    <div className={mode ? "bg-slate-200" : "bg-slate-700 overflow-y-scroll"}>
       <PokemonsContext.Provider
         value={{
           pokemons,

@@ -92,7 +92,7 @@ export default function App() {
         }}
       >
         <Header setMode={setMode} mode={mode} setSelectedType={setSelectedType}/>
-        <Searchbar pokemons={pokemons} onSearch={onSearchHandler} searchbarOpen={searchbarOpen} setSelectedType={setSelectedType}/>
+        <Searchbar setPage={setPage} pokemons={pokemons} onSearch={onSearchHandler} searchbarOpen={searchbarOpen} setSelectedType={setSelectedType}/>
         <section id="Pokedex">
           {notFound ? (
             <NotFound />

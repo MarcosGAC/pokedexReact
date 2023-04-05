@@ -10,7 +10,7 @@ const Searchbar = (props) => {
   const [searching, setSearching] = useState(false);
   const exceptThisSymbols = ["."];
 
-  const { onSearch, searchbarOpen, setSelectedType } = props;
+  const { onSearch, searchbarOpen, setSelectedType,setPage } = props;
 
   const onChangeHandler = (e) => {
     const result = e.target.value.toLowerCase();
@@ -48,6 +48,7 @@ const Searchbar = (props) => {
     { tipo: "water" },
     { tipo: "fire" },
   ];
+  
 
 
   return (
@@ -66,7 +67,7 @@ const Searchbar = (props) => {
                       key={index}
                       style={{ backgroundColor: pokemonTypeColors[opt.tipo] }}
                       value={opt.tipo}
-                      onClick={() => setSelectedType(opt.tipo)}
+                      onClick={() => setSelectedType(opt.tipo) & setPage(0) }
                     >
                       <a href={PokedexRef.url}>
                       <div className="flex items-center justify-around uppercase text-white">
@@ -86,7 +87,7 @@ const Searchbar = (props) => {
                     </button>
                   );
                 })}
-           <a href={PokedexRef.url}><button onClick={()=>setSelectedType("") } className=" ml-6 align-top mt-1 w-[60px] p-2 h-10 rounded-2xl bg-white">All</button>  </a>
+           <a href={PokedexRef.url}><button onClick={()=>setSelectedType("") & setPage(0)} className=" ml-6 align-top mt-1 w-[60px] p-2 h-10 rounded-2xl bg-white">All</button>  </a>
             </div>
             <div className="flex items-center">
             <div className="searchbar">

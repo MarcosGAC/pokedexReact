@@ -152,7 +152,8 @@ export default function ModalPokemon({
                 <button
                   onClick={() => statuSelected()}
                   className={`w-1/2  font-sans font-semibold max-[600px]:w-[40%] p-1`}
-                  style={{ backgroundColor: showStatus ? "green" : "gray" }}
+                  style={{ backgroundColor: showStatus ? "#00FF00" : "gray",
+                  color: !showStatus ? "black" : "white" }}
                 >
                   Status
                 </button>
@@ -160,7 +161,9 @@ export default function ModalPokemon({
                 <button
                   onClick={() => MovesSelected()}
                   className={`w-1/2 font-sans font-semibold max-[600px]:w-[40%] p-1`}
-                  style={{ backgroundColor: !showStatus ? "green" : "gray" }}
+                  style={{ backgroundColor: !showStatus ? "#00FF00" : "gray",
+                   color: !showStatus ? "white" : "black" , 
+                  }}
                 >
                   Moves
                 </button>

@@ -29,7 +29,7 @@ export default function Header({setMode,mode}) {
             </p>
           </div>
           <div
-            className="w-full h-20 flex items-center gap-4 text-zinc-100 dark:text-neutral-900 
+            className="w-full h-20 max-h-[90%] flex items-center gap-4 text-zinc-100 dark:text-neutral-900 
     md:flex-col md:h-full md:w-20"
           >
             <div className="w-full h-px bg-gradient-to-l from-zinc-100 dark:from-neutral-900 md:w-px md:h-1/2 md:bg-gradient-to-t" />
